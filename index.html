@@ -251,8 +251,30 @@
     font-family:'Poppins',sans-serif; font-weight:600; font-size:0.82rem; padding:6px 10px; border-radius:8px;
     border:1.5px solid var(--line); background:var(--cream); color:var(--ink); cursor:pointer;
   }
-  .payment-select.is-yes{ background:var(--green); border-color:var(--green); color:#fff; }
-  .payment-select.is-no{ background:var(--cream-deep); border-color:var(--gold); color:var(--vermillion); }
+  .payment-select.is-paid{ background:var(--green); border-color:var(--green); color:#fff; }
+  .payment-select.is-notpaid{ background:var(--cream-deep); border-color:var(--gold); color:var(--vermillion); }
+
+  .payment-gate{
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    background:var(--paper); border:1px dashed var(--gold); border-radius:12px; padding:12px 16px; margin-bottom:14px;
+  }
+  .payment-gate svg{ width:20px; height:20px; color:var(--green-deep); flex:none; }
+  .payment-gate span{ font-size:0.86rem; color:var(--ink-soft); }
+  .payment-gate input{
+    font-family:'JetBrains Mono',monospace; padding:8px 10px; border-radius:8px; border:1.5px solid var(--line);
+    width:110px; background:var(--cream); letter-spacing:0.2em; text-align:center; font-size:0.9rem;
+  }
+  .payment-gate input:focus{ outline:none; border-color:var(--green); }
+  .payment-unlock-btn{
+    background:var(--green-deep); color:var(--cream); border:none; padding:8px 16px; border-radius:8px;
+    font-weight:600; cursor:pointer; font-family:'Poppins',sans-serif; font-size:0.84rem;
+  }
+  .payment-unlock-btn:hover{ background:var(--green); }
+  .payment-error{ color:var(--vermillion); font-size:0.78rem; }
+  .payment-locked{
+    font-size:0.78rem; color:var(--ink-soft); background:var(--cream-deep); border:1px dashed var(--line);
+    border-radius:8px; padding:6px 10px; display:inline-block;
+  }
   .del-btn{ background:none; border:none; color:var(--vermillion); cursor:pointer; font-size:0.8rem; font-weight:600; }
   .del-btn:hover{ text-decoration:underline; }
   .empty-state{ text-align:center; padding:50px 20px; color:var(--ink-soft); background:var(--paper); border-radius:14px; border:1px dashed var(--line); }
@@ -397,6 +419,14 @@
         <button class="refresh-btn" id="refresh-btn">Refresh</button>
       </div>
 
+      <div class="payment-gate" id="payment-gate">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.6"/></svg>
+        <span>Payment Status is locked.</span>
+        <input type="password" id="payment-password" inputmode="numeric" maxlength="8" placeholder="Code" autocomplete="off">
+        <button class="payment-unlock-btn" id="payment-unlock-btn">Unlock</button>
+        <span class="payment-error" id="payment-error"></span>
+      </div>
+
       <div id="roster-wrap"></div>
     </div>
   </section>
@@ -425,7 +455,9 @@
   "use strict";
   const PRICE_PER_PERSON = 30;
   const ADMIN_CODE = "1983";
+  const PAYMENT_CODE = "1947";
   let adminUnlocked = false;
+  let paymentUnlocked = false;
 
   /* ---------- Tab switching ---------- */
   const tabBtns = document.querySelectorAll(".tab-btn");
@@ -702,6 +734,27 @@
   unlockBtn.addEventListener("click", tryUnlock);
   adminPasswordInput.addEventListener("keydown", (e) => { if (e.key === "Enter") tryUnlock(); });
 
+  /* ---------- Payment Status gate (separate passcode) ---------- */
+  const paymentGate = document.getElementById("payment-gate");
+  const paymentPasswordInput = document.getElementById("payment-password");
+  const paymentError = document.getElementById("payment-error");
+  const paymentUnlockBtn = document.getElementById("payment-unlock-btn");
+
+  function tryPaymentUnlock(){
+    if (paymentPasswordInput.value === PAYMENT_CODE){
+      paymentUnlocked = true;
+      paymentGate.hidden = true;
+      paymentError.textContent = "";
+      loadRoster();
+    } else {
+      paymentError.textContent = "Incorrect code.";
+      paymentPasswordInput.value = "";
+      paymentPasswordInput.focus();
+    }
+  }
+  paymentUnlockBtn.addEventListener("click", tryPaymentUnlock);
+  paymentPasswordInput.addEventListener("keydown", (e) => { if (e.key === "Enter") tryPaymentUnlock(); });
+
   document.getElementById("refresh-btn").addEventListener("click", loadRoster);
 
   async function loadRoster(){
@@ -725,24 +778,25 @@
 
     let rows = "";
     regs.forEach(r => {
-      const paid = r.paymentDone === "Yes";
+      const paid = r.paymentDone === "Paid";
+      const paymentCell = paymentUnlocked
+        ? `<select class="payment-select ${paid ? 'is-paid' : 'is-notpaid'}" data-id="${r.id}">
+             <option value="Not paid" ${paid ? "" : "selected"}>Not paid</option>
+             <option value="Paid" ${paid ? "selected" : ""}>Paid</option>
+           </select>`
+        : `<span class="payment-locked">🔒 Locked</span>`;
       rows += `<tr data-id="${r.id}">
         <td>${escapeHtml(r.name)}</td>
         <td>${escapeHtml(r.email || "—")}</td>
         <td>${r.partySize}</td>
-        <td>
-          <select class="payment-select ${paid ? 'is-yes' : 'is-no'}" data-id="${r.id}">
-            <option value="No" ${paid ? "" : "selected"}>No</option>
-            <option value="Yes" ${paid ? "selected" : ""}>Yes</option>
-          </select>
-        </td>
         <td class="amt">$${(r.total||0).toFixed(2)}</td>
+        <td>${paymentCell}</td>
         <td><button class="del-btn" data-id="${r.id}">Remove</button></td>
       </tr>`;
     });
 
     wrap.innerHTML = `<table class="roster">
-      <thead><tr><th>Name</th><th>Email</th><th>Party Size</th><th>Payment Done</th><th>Total Amount</th><th></th></tr></thead>
+      <thead><tr><th>Name</th><th>Email</th><th>Party Size</th><th>Total Amount</th><th>Payment Status</th><th></th></tr></thead>
       <tbody>${rows}</tbody>
     </table>`;
 
@@ -751,10 +805,10 @@
         sel.disabled = true;
         const ok = await updatePaymentStatus(sel.dataset.id, sel.value);
         sel.disabled = false;
-        sel.classList.toggle("is-yes", sel.value === "Yes");
-        sel.classList.toggle("is-no", sel.value === "No");
+        sel.classList.toggle("is-paid", sel.value === "Paid");
+        sel.classList.toggle("is-notpaid", sel.value === "Not paid");
         if (!ok){
-          sel.classList.remove("is-yes","is-no");
+          sel.classList.remove("is-paid","is-notpaid");
         }
       });
     });
