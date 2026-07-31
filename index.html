@@ -477,7 +477,7 @@
 
 <footer>Onam in the Ottawa Valley &middot; Questions? Website questions go to Sreeyuth (<a href="mailto:sreeyuth@gmail.com">sreeyuth@gmail.com</a>). E-transfer questions go to Nebu (<a href="mailto:nebucphilip@outlook.com">nebucphilip@outlook.com</a>).</footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/emailjs-com/3.2.0/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
 <script type="module">
@@ -746,16 +746,13 @@
   }
 
   /* ---------- Confirmation email (EmailJS) ---------- */
-  // TODO: replace these three placeholders with your real EmailJS credentials.
-  // See emailjs.com — Email Services (Service ID), Email Templates (Template ID),
-  // and Account > General (Public Key).
   const EMAILJS_SERVICE_ID = "service_a1u2k0e";
   const EMAILJS_TEMPLATE_ID = "template_jyn7xyc";
   const EMAILJS_PUBLIC_KEY = "R5VPWpsBL0TYn7YQG";
   let emailjsReady = false;
   try{
     if (window.emailjs && EMAILJS_PUBLIC_KEY !== "YOUR_EMAILJS_PUBLIC_KEY"){
-      window.emailjs.init(EMAILJS_PUBLIC_KEY);
+      window.emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
       emailjsReady = true;
     }
   }catch(err){
@@ -775,7 +772,7 @@
         total_amount: "$" + (record.total || 0).toFixed(2),
         event_date: "Saturday, August 29",
         venue: "Shady Nook Recreation Centre, 80 Richardson Crescent, Pembroke"
-      }, EMAILJS_PUBLIC_KEY);
+      }, { publicKey: EMAILJS_PUBLIC_KEY });
       return true;
     }catch(err){
       console.error("Failed to send confirmation email:", err && err.text ? err.text : err);
