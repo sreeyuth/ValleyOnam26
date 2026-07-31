@@ -164,19 +164,35 @@
     font-size:0.9rem; line-height:1.55; color:var(--ink); margin-bottom:22px;
   }
   .etransfer-note strong{ font-family:'JetBrains Mono',monospace; color:var(--vermillion); }
+  .copy-btn{
+    font-family:'Poppins',sans-serif; font-weight:600; font-size:0.74rem; letter-spacing:0.02em;
+    padding:3px 10px; border-radius:999px; border:1.3px solid var(--gold); background:var(--paper);
+    color:var(--green-deep); cursor:pointer; margin:0 4px; vertical-align:middle; transition:all .2s ease;
+  }
+  .copy-btn:hover{ background:var(--gold-light); }
+  .copy-btn.copied{ background:var(--green); border-color:var(--green); color:#fff; }
 
   .field fieldset{ border:none; padding:0; margin:0; }
   .field legend{ display:block; font-size:0.78rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--green-deep); margin-bottom:9px; padding:0; }
-  .toggle-row{ display:flex; gap:10px; }
-  .toggle-btn{
-    flex:1; padding:12px; border-radius:10px; border:1.5px solid var(--line); background:var(--cream);
+  .confirm-toggle{
+    width:100%; display:flex; align-items:center; gap:12px; text-align:left;
+    padding:14px 16px; border-radius:12px; border:1.5px solid var(--line); background:var(--cream);
     font-family:'Poppins',sans-serif; font-weight:600; font-size:0.92rem; color:var(--ink-soft); cursor:pointer;
     transition:all .2s ease;
   }
-  .toggle-btn:hover{ border-color:var(--green); }
-  .toggle-btn.selected-yes{ background:var(--green); border-color:var(--green); color:#fff; }
-  .toggle-btn.selected-no{ background:var(--rose); border-color:var(--rose); color:#fff; }
-  .toggle-btn:focus-visible{ outline:2px solid var(--gold); outline-offset:2px; }
+  .confirm-toggle:hover{ border-color:var(--green); }
+  .confirm-toggle:focus-visible{ outline:2px solid var(--gold); outline-offset:2px; }
+  .confirm-toggle .check-circle{
+    flex:none; width:22px; height:22px; border-radius:50%; border:2px solid var(--line); background:var(--paper);
+    position:relative; transition:all .2s ease;
+  }
+  .confirm-toggle.selected{ background:var(--green); border-color:var(--green); color:#fff; }
+  .confirm-toggle.selected .check-circle{ background:#fff; border-color:#fff; }
+  .confirm-toggle.selected .check-circle::after{
+    content:""; position:absolute; left:50%; top:46%; width:5px; height:10px;
+    border-right:2.5px solid var(--green); border-bottom:2.5px solid var(--green);
+    transform:translate(-50%,-50%) rotate(45deg);
+  }
 
   .submit-btn{
     width:100%; padding:15px; border-radius:12px; border:none; margin-top:8px;
@@ -232,6 +248,7 @@
 
   .admin-toolbar{ display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:10px; }
   .admin-toolbar h2{ font-size:1.2rem; color:var(--green-deep); }
+  .toolbar-actions{ display:flex; gap:10px; flex-wrap:wrap; }
   .refresh-btn{
     background:transparent; border:1.5px solid var(--green); color:var(--green-deep); font-weight:600;
     padding:8px 16px; border-radius:999px; cursor:pointer; font-family:'Poppins',sans-serif; font-size:0.84rem;
@@ -253,6 +270,15 @@
   }
   .payment-select.is-paid, .payment-badge.is-paid{ background:var(--green); border-color:var(--green); color:#fff; }
   .payment-select.is-notpaid, .payment-badge.is-notpaid{ background:var(--cream-deep); border-color:var(--gold); color:var(--vermillion); }
+  .status-cell{ display:flex; flex-direction:column; align-items:flex-start; gap:6px; }
+  .email-btn{
+    font-family:'Poppins',sans-serif; font-weight:600; font-size:0.76rem; padding:5px 10px; border-radius:8px;
+    border:1.5px solid var(--green-deep); background:var(--paper); color:var(--green-deep); cursor:pointer;
+    transition:all .2s ease;
+  }
+  .email-btn:hover:not(:disabled){ background:var(--green-deep); color:#fff; }
+  .email-btn.sent{ background:var(--green); border-color:var(--green); color:#fff; cursor:default; opacity:1; }
+  .email-btn:disabled{ cursor:not-allowed; }
   .payment-badge{
     display:inline-block; font-family:'Poppins',sans-serif; font-weight:600; font-size:0.8rem;
     padding:6px 12px; border-radius:999px; border:1.5px solid var(--line); margin-right:8px;
@@ -290,6 +316,7 @@
   .empty-state svg{ width:44px; height:44px; margin-bottom:12px; opacity:0.6; }
 
   footer{ text-align:center; padding:26px 20px 40px 20px; font-size:0.78rem; color:var(--ink-soft); }
+  footer a{ color:var(--green-deep); text-decoration:underline; text-decoration-color:var(--line); text-underline-offset:2px; }
 
   @media (prefers-reduced-motion: reduce){
     *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
@@ -333,7 +360,7 @@
         <div class="story-strip">
           <div class="story-card">
             <svg viewBox="0 0 200 120" id="art-maveli"></svg>
-            <div class="story-text"><h3>Maveli Vaarunnu</h3><p>The just king who ruled Kerala in its golden age returns once a year to see his people thriving.</p></div>
+            <div class="story-text"><h3>Maveli Varunnu</h3><p>The just king who ruled Kerala in its golden age returns once a year to see his people thriving.</p></div>
           </div>
           <div class="story-card">
             <svg viewBox="0 0 200 120" id="art-pookalam"></svg>
@@ -376,20 +403,23 @@
               </div>
 
               <div class="etransfer-note">
-                E-transfer <strong id="etransfer-amount">$30.00</strong> to <strong>sreeyuth@gmail.com</strong> to complete your registration.
+                E-transfer <strong id="etransfer-amount">$30.00</strong> to Nebu Philip at
+                <strong>nebucphilip@outlook.com</strong>
+                <button type="button" class="copy-btn" id="copy-email-btn" aria-label="Copy email address to clipboard">Copy</button>
+                to complete your registration.
               </div>
 
               <div class="field">
                 <fieldset>
                   <legend>Have you done the e-transfer?</legend>
-                  <div class="toggle-row" role="group" aria-label="Have you done the e-transfer?">
-                    <button type="button" class="toggle-btn" id="etransfer-yes" data-val="yes">Yes, sent it</button>
-                    <button type="button" class="toggle-btn" id="etransfer-no" data-val="no">Not yet</button>
-                  </div>
+                  <button type="button" class="confirm-toggle" id="etransfer-confirm-btn" aria-pressed="false">
+                    <span class="check-circle" aria-hidden="true"></span>
+                    Yes, I have completed the e-transfer
+                  </button>
                 </fieldset>
               </div>
 
-              <button type="submit" class="submit-btn" id="submit-btn" disabled>Confirm My Seat</button>
+              <button type="submit" class="submit-btn" id="submit-btn" disabled>Complete Registration</button>
               <p class="helper-text" id="helper-text">Complete the e-transfer, then confirm above, to activate your submission.</p>
             </form>
           </div>
@@ -425,12 +455,15 @@
 
       <div class="admin-toolbar">
         <h2>Registration roster</h2>
-        <button class="refresh-btn" id="refresh-btn">Refresh</button>
+        <div class="toolbar-actions">
+          <button class="refresh-btn" id="export-pdf-btn">Export to PDF</button>
+          <button class="refresh-btn" id="refresh-btn">Refresh</button>
+        </div>
       </div>
 
       <div class="payment-gate" id="payment-gate">
         <svg viewBox="0 0 24 24" fill="none"><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-        <span>Payment Status is view-only. Enter the code to edit it.</span>
+        <span>Registration Status is view-only. Enter the code to edit it.</span>
         <input type="password" id="payment-password" inputmode="numeric" maxlength="8" placeholder="Code" autocomplete="off">
         <button class="payment-unlock-btn" id="payment-unlock-btn">Unlock editing</button>
         <span class="payment-error" id="payment-error"></span>
@@ -442,8 +475,11 @@
 
 </main>
 
-<footer>Onam in the Ottawa Valley &middot; Questions? E-transfer confirmations go to sreeyuth@gmail.com</footer>
+<footer>Onam in the Ottawa Valley &middot; Questions? Website questions go to Sreeyuth (<a href="mailto:sreeyuth@gmail.com">sreeyuth@gmail.com</a>). E-transfer questions go to Nebu (<a href="mailto:nebucphilip@outlook.com">nebucphilip@outlook.com</a>).</footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/emailjs-com/3.2.0/email.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
   import { getDatabase, ref, push, set, get, remove, update } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
@@ -566,15 +602,14 @@
   const partyInput = document.getElementById("reg-party");
   const totalAmountEl = document.getElementById("total-amount");
   const etransferAmountEl = document.getElementById("etransfer-amount");
-  const yesBtn = document.getElementById("etransfer-yes");
-  const noBtn = document.getElementById("etransfer-no");
+  const confirmToggleBtn = document.getElementById("etransfer-confirm-btn");
   const submitBtn = document.getElementById("submit-btn");
   const helperText = document.getElementById("helper-text");
   const form = document.getElementById("reg-form");
   const formView = document.getElementById("form-view");
   const confirmView = document.getElementById("confirm-view");
 
-  let etransferConfirmed = null; // null | true | false
+  let etransferConfirmed = false;
 
   function currentTotal(){
     let size = parseInt(partyInput.value, 10);
@@ -597,18 +632,16 @@
     const ready = nameOk && emailOk && partyOk && etransferConfirmed === true;
     submitBtn.disabled = !ready;
     submitBtn.classList.toggle("enabled", ready);
-    if (etransferConfirmed === false){
-      helperText.textContent = "Send the e-transfer above, then tap \u201cYes, sent it\u201d to unlock submission.";
-    } else if (etransferConfirmed === true && !nameOk){
+    if (!etransferConfirmed){
+      helperText.textContent = "Confirm you've sent the e-transfer above to activate submission.";
+    } else if (!nameOk){
       helperText.textContent = "Add your name to finish reserving your seat.";
-    } else if (etransferConfirmed === true && !emailOk){
+    } else if (!emailOk){
       helperText.textContent = "Add a valid email so we can reach you.";
-    } else if (etransferConfirmed === true && !partyOk){
+    } else if (!partyOk){
       helperText.textContent = "Party size must be at least 1.";
-    } else if (etransferConfirmed === true){
-      helperText.textContent = "You're all set — confirm below.";
     } else {
-      helperText.textContent = "Complete the e-transfer, then confirm above, to activate your submission.";
+      helperText.textContent = "You're all set — confirm below.";
     }
   }
 
@@ -616,16 +649,39 @@
   nameInput.addEventListener("input", updateSubmitState);
   emailInput.addEventListener("input", updateSubmitState);
 
-  yesBtn.addEventListener("click", () => {
-    etransferConfirmed = true;
-    yesBtn.classList.add("selected-yes"); noBtn.classList.remove("selected-no");
+  confirmToggleBtn.addEventListener("click", () => {
+    etransferConfirmed = !etransferConfirmed;
+    confirmToggleBtn.classList.toggle("selected", etransferConfirmed);
+    confirmToggleBtn.setAttribute("aria-pressed", String(etransferConfirmed));
     updateSubmitState();
   });
-  noBtn.addEventListener("click", () => {
-    etransferConfirmed = false;
-    noBtn.classList.add("selected-no"); yesBtn.classList.remove("selected-yes");
-    updateSubmitState();
-  });
+
+  const copyEmailBtn = document.getElementById("copy-email-btn");
+  if (copyEmailBtn){
+    copyEmailBtn.addEventListener("click", async () => {
+      const email = "nebucphilip@outlook.com";
+      try{
+        await navigator.clipboard.writeText(email);
+      }catch(err){
+        // Fallback for browsers without Clipboard API permissions
+        const temp = document.createElement("textarea");
+        temp.value = email;
+        temp.style.position = "fixed";
+        temp.style.opacity = "0";
+        document.body.appendChild(temp);
+        temp.select();
+        try{ document.execCommand("copy"); }catch(e2){ console.error("Copy fallback failed:", e2); }
+        document.body.removeChild(temp);
+      }
+      const original = copyEmailBtn.textContent;
+      copyEmailBtn.textContent = "Copied!";
+      copyEmailBtn.classList.add("copied");
+      setTimeout(() => {
+        copyEmailBtn.textContent = original;
+        copyEmailBtn.classList.remove("copied");
+      }, 1800);
+    });
+  }
 
   refreshTotals();
 
@@ -679,6 +735,54 @@
     }
   }
 
+  async function markConfEmailSent(id){
+    try{
+      await update(ref(db, "registrations/" + id), { confEmailSent: true });
+      return true;
+    }catch(err){
+      console.error("Failed to record confirmation email status:", err);
+      return false;
+    }
+  }
+
+  /* ---------- Confirmation email (EmailJS) ---------- */
+  // TODO: replace these three placeholders with your real EmailJS credentials.
+  // See emailjs.com — Email Services (Service ID), Email Templates (Template ID),
+  // and Account > General (Public Key).
+  const EMAILJS_SERVICE_ID = "service_a1u2k0e";
+  const EMAILJS_TEMPLATE_ID = "template_jyn7xyc";
+  const EMAILJS_PUBLIC_KEY = "R5VPWpsBL0TYn7YQG";
+  let emailjsReady = false;
+  try{
+    if (window.emailjs && EMAILJS_PUBLIC_KEY !== "YOUR_EMAILJS_PUBLIC_KEY"){
+      window.emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+      emailjsReady = true;
+    }
+  }catch(err){
+    console.error("EmailJS failed to initialize:", err);
+  }
+
+  async function sendConfirmationEmail(record){
+    if (!emailjsReady){
+      console.error("EmailJS is not configured yet — add your Service ID, Template ID, and Public Key.");
+      return false;
+    }
+    try{
+      await window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        to_name: record.name,
+        to_email: record.email,
+        party_size: record.partySize,
+        total_amount: "$" + (record.total || 0).toFixed(2),
+        event_date: "Saturday, August 29",
+        venue: "Shady Nook Recreation Centre, 80 Richardson Crescent, Pembroke"
+      });
+      return true;
+    }catch(err){
+      console.error("Failed to send confirmation email:", err);
+      return false;
+    }
+  }
+
   /* ---------- Form submit ---------- */
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -696,7 +800,7 @@
 
     const ok = await saveRegistration(record);
 
-    submitBtn.textContent = "Confirm My Seat";
+    submitBtn.textContent = "Complete Registration";
     if (ok){
       formView.hidden = true;
       confirmView.hidden = false;
@@ -710,9 +814,9 @@
 
   document.getElementById("register-another").addEventListener("click", () => {
     form.reset();
-    etransferConfirmed = null;
-    yesBtn.classList.remove("selected-yes");
-    noBtn.classList.remove("selected-no");
+    etransferConfirmed = false;
+    confirmToggleBtn.classList.remove("selected");
+    confirmToggleBtn.setAttribute("aria-pressed", "false");
     partyInput.value = 1;
     refreshTotals();
     updateSubmitState();
@@ -766,6 +870,56 @@
 
   document.getElementById("refresh-btn").addEventListener("click", loadRoster);
 
+  document.getElementById("export-pdf-btn").addEventListener("click", async () => {
+    const exportBtn = document.getElementById("export-pdf-btn");
+    exportBtn.disabled = true;
+    const originalLabel = exportBtn.textContent;
+    exportBtn.textContent = "Exporting...";
+    try{
+      const regs = await fetchAllRegistrations();
+      if (!window.jspdf || !window.jspdf.jsPDF){
+        throw new Error("PDF library not loaded");
+      }
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      doc.setFontSize(14);
+      doc.text("Onam 2026 \u00b7 Ottawa Valley \u2014 Registration Roster", 14, 16);
+      doc.setFontSize(9);
+      doc.text("Shady Nook Recreation Centre, Pembroke \u00b7 Saturday, August 29", 14, 22);
+
+      const body = regs.map(r => [
+        r.name || "",
+        r.email || "",
+        String(r.partySize || 0),
+        "$" + (r.total || 0).toFixed(2),
+        r.paymentDone === "Paid" ? "Paid" : "Not paid",
+        r.confEmailSent ? "Sent" : "Not sent"
+      ]);
+      const totalGuests = regs.reduce((s,r) => s + (r.partySize||0), 0);
+      const totalAmount = regs.reduce((s,r) => s + (r.total||0), 0);
+
+      doc.autoTable({
+        head: [["Name","Email","Party Size","Total Amount","Registration Status","Conf Email"]],
+        body: body,
+        startY: 28,
+        styles: { fontSize: 8 },
+        headStyles: { fillColor: [18, 59, 41] }
+      });
+
+      const finalY = (doc.lastAutoTable && doc.lastAutoTable.finalY) ? doc.lastAutoTable.finalY : 28;
+      doc.setFontSize(9);
+      doc.text(`Total registrations: ${regs.length}   Total guests: ${totalGuests}   Total ticket sales: $${totalAmount.toFixed(2)}`, 14, finalY + 10);
+
+      doc.save("onam-2026-registrations.pdf");
+    }catch(err){
+      console.error("PDF export failed:", err);
+      alert("Could not export the PDF. Please try again.");
+    }finally{
+      exportBtn.disabled = false;
+      exportBtn.textContent = originalLabel;
+    }
+  });
+
   async function loadRoster(){
     const wrap = document.getElementById("roster-wrap");
     wrap.innerHTML = `<div class="empty-state"><p>Loading roster...</p></div>`;
@@ -788,12 +942,22 @@
     let rows = "";
     regs.forEach(r => {
       const paid = r.paymentDone === "Paid";
-      const paymentCell = paymentUnlocked
-        ? `<select class="payment-select ${paid ? 'is-paid' : 'is-notpaid'}" data-id="${r.id}">
-             <option value="Not paid" ${paid ? "" : "selected"}>Not paid</option>
-             <option value="Paid" ${paid ? "selected" : ""}>Paid</option>
-           </select>`
-        : `<span class="payment-locked ${paid ? 'is-paid' : 'is-notpaid'}">${paid ? "Paid" : "Not paid"}</span>`;
+      const emailSent = !!r.confEmailSent;
+      let paymentCell;
+      if (paymentUnlocked){
+        const emailBtn = emailSent
+          ? `<button class="email-btn sent" disabled data-id="${r.id}">Conf email sent</button>`
+          : `<button class="email-btn" data-id="${r.id}">Send conf email</button>`;
+        paymentCell = `<div class="status-cell">
+            <select class="payment-select ${paid ? 'is-paid' : 'is-notpaid'}" data-id="${r.id}">
+              <option value="Not paid" ${paid ? "" : "selected"}>Not paid</option>
+              <option value="Paid" ${paid ? "selected" : ""}>Paid</option>
+            </select>
+            ${emailBtn}
+          </div>`;
+      } else {
+        paymentCell = `<span class="payment-locked ${paid ? 'is-paid' : 'is-notpaid'}">${paid ? "Paid" : "Not paid"}</span>`;
+      }
       rows += `<tr data-id="${r.id}">
         <td>${escapeHtml(r.name)}</td>
         <td>${escapeHtml(r.email || "—")}</td>
@@ -805,7 +969,7 @@
     });
 
     wrap.innerHTML = `<table class="roster">
-      <thead><tr><th>Name</th><th>Email</th><th>Party Size</th><th>Total Amount</th><th>Payment Status</th><th></th></tr></thead>
+      <thead><tr><th>Name</th><th>Email</th><th>Party Size</th><th>Total Amount</th><th>Registration Status</th><th></th></tr></thead>
       <tbody>${rows}</tbody>
     </table>`;
 
@@ -818,6 +982,25 @@
         sel.classList.toggle("is-notpaid", sel.value === "Not paid");
         if (!ok){
           sel.classList.remove("is-paid","is-notpaid");
+        }
+      });
+    });
+
+    wrap.querySelectorAll(".email-btn:not(.sent)").forEach(btn => {
+      btn.addEventListener("click", async () => {
+        const record = regs.find(r => r.id === btn.dataset.id);
+        if (!record) return;
+        btn.disabled = true;
+        btn.textContent = "Sending...";
+        const ok = await sendConfirmationEmail(record);
+        if (ok){
+          await markConfEmailSent(record.id);
+          btn.textContent = "Conf email sent";
+          btn.classList.add("sent");
+        } else {
+          btn.disabled = false;
+          btn.textContent = "Send conf email";
+          alert("Could not send the confirmation email. Please check the EmailJS setup and try again.");
         }
       });
     });
