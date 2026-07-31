@@ -755,7 +755,7 @@
   let emailjsReady = false;
   try{
     if (window.emailjs && EMAILJS_PUBLIC_KEY !== "YOUR_EMAILJS_PUBLIC_KEY"){
-      window.emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+      window.emailjs.init(EMAILJS_PUBLIC_KEY);
       emailjsReady = true;
     }
   }catch(err){
@@ -775,10 +775,10 @@
         total_amount: "$" + (record.total || 0).toFixed(2),
         event_date: "Saturday, August 29",
         venue: "Shady Nook Recreation Centre, 80 Richardson Crescent, Pembroke"
-      });
+      }, EMAILJS_PUBLIC_KEY);
       return true;
     }catch(err){
-      console.error("Failed to send confirmation email:", err);
+      console.error("Failed to send confirmation email:", err && err.text ? err.text : err);
       return false;
     }
   }
