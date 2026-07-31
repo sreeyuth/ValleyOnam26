@@ -953,7 +953,10 @@
             ${emailBtn}
           </div>`;
       } else {
-        paymentCell = `<span class="payment-locked ${paid ? 'is-paid' : 'is-notpaid'}">${paid ? "Paid" : "Not paid"}</span>`;
+        paymentCell = `<div class="status-cell">
+            <span class="payment-locked ${paid ? 'is-paid' : 'is-notpaid'}">${paid ? "Paid" : "Not paid"}</span>
+            <span class="payment-locked ${emailSent ? 'is-paid' : 'is-notpaid'}">${emailSent ? "Conf email sent" : "Conf email not sent"}</span>
+          </div>`;
       }
       rows += `<tr data-id="${r.id}">
         <td>${escapeHtml(r.name)}</td>
