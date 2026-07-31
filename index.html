@@ -48,22 +48,14 @@
 
   a{ color:inherit; }
 
-  /* ===== HERO ===== */
+  /* ===== HERO (compact top strip) ===== */
   .hero{
     background: linear-gradient(180deg, var(--green-deep) 0%, var(--green) 100%);
-    color:var(--cream);
-    padding: 0 0 56px 0;
     position:relative;
     overflow:hidden;
   }
-  .hero::after{
-    content:"";
-    position:absolute; inset:auto 0 0 0; height:70px;
-    background: repeating-linear-gradient(115deg, var(--cream) 0 26px, transparent 26px 52px);
-    opacity:0.06;
-  }
   nav.tabs{
-    max-width:1040px; margin:0 auto; padding:22px 24px 0 24px;
+    max-width:1200px; margin:0 auto; padding:18px 24px;
     display:flex; align-items:center; justify-content:space-between; gap:16px;
     position:relative; z-index:3;
   }
@@ -79,45 +71,50 @@
   .tab-btn:not(.active):hover{ color:var(--cream); background:rgba(255,255,255,0.10); }
   .tab-btn:focus-visible{ outline:2px solid var(--gold-light); outline-offset:2px; }
 
-  .hero-content{
-    max-width:1040px; margin:0 auto; padding: 40px 24px 0 24px;
-    display:grid; grid-template-columns: 1.1fr 0.9fr; gap:28px; align-items:center;
-    position:relative; z-index:2;
-  }
-  .hero-copy .eyebrow{
-    font-family:'JetBrains Mono', monospace; font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase;
-    color:var(--gold-light); margin-bottom:14px; display:flex; align-items:center; gap:10px;
-  }
-  .eyebrow::before{ content:""; width:26px; height:1px; background:var(--gold-light); display:inline-block; }
-  .hero-copy h1{ font-size:clamp(2.3rem, 5vw, 3.4rem); line-height:1.04; font-weight:700; color:var(--cream); }
-  .hero-copy h1 em{ font-style:italic; font-weight:400; color:var(--gold-light); }
-  .hero-copy p.tagline{ margin-top:16px; max-width:44ch; font-size:1.02rem; line-height:1.6; color:rgba(251,242,223,0.85); }
-
-  .event-meta{ margin-top:26px; display:flex; flex-direction:column; gap:10px; }
-  .event-meta .row{ display:flex; align-items:flex-start; gap:10px; font-size:0.92rem; color:var(--cream); }
-  .event-meta .tag{ font-family:'JetBrains Mono',monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--green-deep); background:var(--gold-light); border-radius:5px; padding:3px 7px; margin-top:1px; flex:none; }
-  .event-meta a.map-link{ text-decoration:underline; text-decoration-color:rgba(251,242,223,0.5); text-underline-offset:3px; }
-
-  .pookalam-wrap{ display:flex; align-items:center; justify-content:center; }
-  .pookalam-wrap svg{ width:100%; max-width:340px; height:auto; filter:drop-shadow(0 20px 30px rgba(0,0,0,0.28)); }
-
   @media (max-width: 760px){
-    .hero-content{ grid-template-columns:1fr; }
-    .pookalam-wrap{ order:-1; max-width:230px; margin:0 auto; }
     nav.tabs{ flex-wrap:wrap; }
   }
 
-  /* ===== STORY STRIP ===== */
-  main{ max-width:1040px; margin:0 auto; padding: 46px 24px 90px 24px; }
-  .story-strip{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-bottom:46px; }
-  .story-card{
-    background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:20px 18px 22px 18px;
-    box-shadow:0 10px 24px -16px rgba(42,27,16,0.25);
+  /* ===== LANDING GRID (details left, registration right) ===== */
+  main{ max-width:1200px; margin:0 auto; padding: 40px 24px 90px 24px; }
+
+  .landing-grid{ display:grid; grid-template-columns: 1.05fr 0.95fr; gap:44px; align-items:start; }
+
+  .details-col .eyebrow{
+    font-family:'JetBrains Mono', monospace; font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--vermillion); margin-bottom:14px; display:flex; align-items:center; gap:10px;
   }
-  .story-card svg{ width:100%; height:120px; display:block; margin-bottom:14px; }
-  .story-card h3{ font-size:1.05rem; font-weight:700; color:var(--green-deep); margin-bottom:6px; }
-  .story-card p{ font-size:0.86rem; line-height:1.55; color:var(--ink-soft); margin:0; }
-  @media (max-width: 760px){ .story-strip{ grid-template-columns:1fr; } }
+  .details-col .eyebrow::before{ content:""; width:26px; height:1px; background:var(--vermillion); display:inline-block; }
+  .details-col h1{ font-size:clamp(2rem, 3.4vw, 2.9rem); line-height:1.06; font-weight:700; color:var(--green-deep); }
+  .details-col h1 em{ font-style:italic; font-weight:400; color:var(--vermillion); }
+  .details-col p.tagline{ margin-top:14px; max-width:48ch; font-size:1rem; line-height:1.6; color:var(--ink-soft); }
+
+  .event-meta{ margin-top:24px; display:flex; flex-direction:column; gap:10px; }
+  .event-meta .row{ display:flex; align-items:flex-start; gap:10px; font-size:0.92rem; color:var(--ink); }
+  .event-meta .tag{ font-family:'JetBrains Mono',monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--cream); background:var(--green-deep); border-radius:5px; padding:3px 7px; margin-top:1px; flex:none; }
+  .event-meta a.map-link{ color:var(--green-deep); text-decoration:underline; text-decoration-color:var(--line); text-underline-offset:3px; }
+
+  .pookalam-wrap{ display:flex; align-items:center; justify-content:flex-start; margin:24px 0 6px 0; }
+  .pookalam-wrap svg{ width:140px; height:140px; filter:drop-shadow(0 10px 16px rgba(18,59,41,0.18)); }
+
+  .register-col{ position:sticky; top:20px; }
+
+  @media (max-width: 900px){
+    .landing-grid{ grid-template-columns:1fr; }
+    .register-col{ position:static; }
+    .pookalam-wrap{ justify-content:center; }
+  }
+
+  /* ===== STORY STRIP ===== */
+  .story-strip{ display:grid; grid-template-columns:1fr; gap:12px; margin-top:26px; }
+  .story-card{
+    display:flex; align-items:center; gap:14px;
+    background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:12px 16px;
+    box-shadow:0 8px 18px -14px rgba(42,27,16,0.25);
+  }
+  .story-card svg{ width:90px; height:54px; flex:none; display:block; }
+  .story-card h3{ font-size:0.96rem; font-weight:700; color:var(--green-deep); margin-bottom:2px; }
+  .story-card p{ font-size:0.8rem; line-height:1.5; color:var(--ink-soft); margin:0; }
 
   /* ===== PANELS ===== */
   .panel{ display:none; animation:fade .35s ease; }
@@ -250,6 +247,12 @@
   table.roster tbody tr:last-child td{ border-bottom:none; }
   table.roster tbody tr:hover{ background:var(--cream-deep); }
   table.roster td.amt{ font-family:'JetBrains Mono',monospace; font-weight:600; color:var(--green-deep); }
+  .payment-select{
+    font-family:'Poppins',sans-serif; font-weight:600; font-size:0.82rem; padding:6px 10px; border-radius:8px;
+    border:1.5px solid var(--line); background:var(--cream); color:var(--ink); cursor:pointer;
+  }
+  .payment-select.is-yes{ background:var(--green); border-color:var(--green); color:#fff; }
+  .payment-select.is-no{ background:var(--cream-deep); border-color:var(--gold); color:var(--vermillion); }
   .del-btn{ background:none; border:none; color:var(--vermillion); cursor:pointer; font-size:0.8rem; font-weight:600; }
   .del-btn:hover{ text-decoration:underline; }
   .empty-state{ text-align:center; padding:50px 20px; color:var(--ink-soft); background:var(--paper); border-radius:14px; border:1px dashed var(--line); }
@@ -275,94 +278,99 @@
       <button class="tab-btn" data-tab="admin" role="tab" aria-selected="false">Admin Only</button>
     </div>
   </nav>
-
-  <div class="hero-content">
-    <div class="hero-copy">
-      <div class="eyebrow">Onam · Chingam 1451</div>
-      <h1>Maveli is coming<br><em>home to the valley.</em></h1>
-      <p class="tagline">Once a year the beloved King Mahabali returns to see his people thriving. Join Malayalis across the Ottawa Valley for a full sadhya, pookalam, and an afternoon of song &amp; nostalgia.</p>
-      <div class="event-meta">
-        <div class="row"><span class="tag">Date</span> Saturday, August 29</div>
-        <div class="row"><span class="tag">Time</span> 11:00 AM – 4:00 PM</div>
-        <div class="row"><span class="tag">Venue</span>
-          <span>Shady Nook Recreation Centre — 80 Richardson Crescent, Pembroke<br>
-          <a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=80+Richardson+Crescent+Pembroke+Ontario">View on map</a></span>
-        </div>
-      </div>
-    </div>
-    <div class="pookalam-wrap"><svg id="hero-pookalam" viewBox="0 0 320 320"></svg></div>
-  </div>
 </header>
 
 <main>
 
-  <div class="story-strip">
-    <div class="story-card">
-      <svg viewBox="0 0 200 120" id="art-maveli"></svg>
-      <h3>Maveli Vaarunnu</h3>
-      <p>The just king who ruled Kerala in its golden age returns once a year to check on his people's happiness — and to be welcomed home.</p>
-    </div>
-    <div class="story-card">
-      <svg viewBox="0 0 200 120" id="art-pookalam"></svg>
-      <h3>Pookalam</h3>
-      <p>Every doorstep wears a flower carpet, grown a ring larger each day of Onam, so Maveli can find his way home.</p>
-    </div>
-    <div class="story-card">
-      <svg viewBox="0 0 200 120" id="art-sadhya"></svg>
-      <h3>Onam Sadhya</h3>
-      <p>A banana-leaf feast of over two dozen dishes — from sambar and avial to payasam — served with the season's harvest.</p>
-    </div>
-  </div>
-
   <!-- ===== REGISTER PANEL ===== -->
   <section id="register-panel" class="panel active">
-    <div class="ticket-stub" id="ticket-stub">
-      <div id="form-view">
-        <h2>Reserve your seat at the sadhya</h2>
-        <p class="sub">$30 per person · Shady Nook Recreation Centre, Pembroke</p>
-
-        <form id="reg-form" novalidate>
-          <div class="field">
-            <label for="reg-name">Name</label>
-            <input type="text" id="reg-name" placeholder="Your full name" autocomplete="name" required>
+    <div class="landing-grid">
+      <div class="details-col">
+        <div class="eyebrow">Onam · Chingam 1451</div>
+        <h1>Maveli is coming<br><em>home to the valley.</em></h1>
+        <p class="tagline">Once a year the beloved King Mahabali returns to see his people thriving. Join Malayalis across the Ottawa Valley for a full sadhya, pookalam, and an afternoon of song &amp; nostalgia.</p>
+        <div class="event-meta">
+          <div class="row"><span class="tag">Date</span> Saturday, August 29</div>
+          <div class="row"><span class="tag">Time</span> 11:00 AM – 4:00 PM</div>
+          <div class="row"><span class="tag">Venue</span>
+            <span>Shady Nook Recreation Centre — 80 Richardson Crescent, Pembroke<br>
+            <a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=80+Richardson+Crescent+Pembroke+Ontario">View on map</a></span>
           </div>
+        </div>
 
-          <div class="field">
-            <label for="reg-party">Party size</label>
-            <input type="number" id="reg-party" min="1" step="1" value="1" required>
+        <div class="pookalam-wrap"><svg id="hero-pookalam" viewBox="0 0 320 320"></svg></div>
+
+        <div class="story-strip">
+          <div class="story-card">
+            <svg viewBox="0 0 200 120" id="art-maveli"></svg>
+            <div class="story-text"><h3>Maveli Vaarunnu</h3><p>The just king who ruled Kerala in its golden age returns once a year to see his people thriving.</p></div>
           </div>
-
-          <div class="divider-row"></div>
-
-          <div class="total-box">
-            <span class="label">Total amount</span>
-            <span class="amount mono" id="total-amount">$30.00</span>
+          <div class="story-card">
+            <svg viewBox="0 0 200 120" id="art-pookalam"></svg>
+            <div class="story-text"><h3>Pookalam</h3><p>Every doorstep wears a flower carpet, grown a ring larger each day, so Maveli can find his way home.</p></div>
           </div>
-
-          <div class="etransfer-note">
-            E-transfer <strong id="etransfer-amount">$30.00</strong> to <strong>sreeyuth@gmail.com</strong> to complete your registration.
+          <div class="story-card">
+            <svg viewBox="0 0 200 120" id="art-sadhya"></svg>
+            <div class="story-text"><h3>Onam Sadhya</h3><p>A banana-leaf feast of two dozen-plus dishes — sambar, avial, payasam — served with the season's harvest.</p></div>
           </div>
-
-          <div class="field">
-            <fieldset>
-              <legend>Have you done the e-transfer?</legend>
-              <div class="toggle-row" role="group" aria-label="Have you done the e-transfer?">
-                <button type="button" class="toggle-btn" id="etransfer-yes" data-val="yes">Yes, sent it</button>
-                <button type="button" class="toggle-btn" id="etransfer-no" data-val="no">Not yet</button>
-              </div>
-            </fieldset>
-          </div>
-
-          <button type="submit" class="submit-btn" id="submit-btn" disabled>Confirm My Seat</button>
-          <p class="helper-text" id="helper-text">Complete the e-transfer, then confirm above, to activate your submission.</p>
-        </form>
+        </div>
       </div>
 
-      <div id="confirm-view" class="confirmation" hidden>
-        <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" fill="#1F6B45"/><path d="M20 33 L28 41 L45 23" stroke="#FBF2DF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-        <h3>You're on the list!</h3>
-        <p id="confirm-detail">See you at Shady Nook on Saturday, August 29.</p>
-        <button type="button" id="register-another">Register another party</button>
+      <div class="register-col">
+        <div class="ticket-stub" id="ticket-stub">
+          <div id="form-view">
+            <h2>Reserve your seat at the sadhya</h2>
+            <p class="sub">$30 per person · Shady Nook Recreation Centre, Pembroke</p>
+
+            <form id="reg-form" novalidate>
+              <div class="field">
+                <label for="reg-name">Name</label>
+                <input type="text" id="reg-name" placeholder="Your full name" autocomplete="name" required>
+              </div>
+
+              <div class="field">
+                <label for="reg-email">Email</label>
+                <input type="email" id="reg-email" placeholder="you@example.com" autocomplete="email" required>
+              </div>
+
+              <div class="field">
+                <label for="reg-party">Party size</label>
+                <input type="number" id="reg-party" min="1" step="1" value="1" required>
+              </div>
+
+              <div class="divider-row"></div>
+
+              <div class="total-box">
+                <span class="label">Total amount</span>
+                <span class="amount mono" id="total-amount">$30.00</span>
+              </div>
+
+              <div class="etransfer-note">
+                E-transfer <strong id="etransfer-amount">$30.00</strong> to <strong>sreeyuth@gmail.com</strong> to complete your registration.
+              </div>
+
+              <div class="field">
+                <fieldset>
+                  <legend>Have you done the e-transfer?</legend>
+                  <div class="toggle-row" role="group" aria-label="Have you done the e-transfer?">
+                    <button type="button" class="toggle-btn" id="etransfer-yes" data-val="yes">Yes, sent it</button>
+                    <button type="button" class="toggle-btn" id="etransfer-no" data-val="no">Not yet</button>
+                  </div>
+                </fieldset>
+              </div>
+
+              <button type="submit" class="submit-btn" id="submit-btn" disabled>Confirm My Seat</button>
+              <p class="helper-text" id="helper-text">Complete the e-transfer, then confirm above, to activate your submission.</p>
+            </form>
+          </div>
+
+          <div id="confirm-view" class="confirmation" hidden>
+            <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" fill="#1F6B45"/><path d="M20 33 L28 41 L45 23" stroke="#FBF2DF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            <h3>You're on the list!</h3>
+            <p>If e-transfer has been done, registration is complete. See you on Saturday, August 29! Onashamsakal!</p>
+            <button type="button" id="register-another">Register another party</button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -400,7 +408,7 @@
 
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getDatabase, ref, push, set, get, remove } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+  import { getDatabase, ref, push, set, get, remove, update } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyDhORoXjoLauxAWWtZMEImnXpsV_OwlVkw",
@@ -514,6 +522,7 @@
 
   /* ---------- Registration form logic ---------- */
   const nameInput = document.getElementById("reg-name");
+  const emailInput = document.getElementById("reg-email");
   const partyInput = document.getElementById("reg-party");
   const totalAmountEl = document.getElementById("total-amount");
   const etransferAmountEl = document.getElementById("etransfer-amount");
@@ -524,7 +533,6 @@
   const form = document.getElementById("reg-form");
   const formView = document.getElementById("form-view");
   const confirmView = document.getElementById("confirm-view");
-  const confirmDetail = document.getElementById("confirm-detail");
 
   let etransferConfirmed = null; // null | true | false
 
@@ -544,14 +552,17 @@
 
   function updateSubmitState(){
     const nameOk = nameInput.value.trim().length > 0;
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim());
     const partyOk = parseInt(partyInput.value,10) >= 1;
-    const ready = nameOk && partyOk && etransferConfirmed === true;
+    const ready = nameOk && emailOk && partyOk && etransferConfirmed === true;
     submitBtn.disabled = !ready;
     submitBtn.classList.toggle("enabled", ready);
     if (etransferConfirmed === false){
       helperText.textContent = "Send the e-transfer above, then tap \u201cYes, sent it\u201d to unlock submission.";
     } else if (etransferConfirmed === true && !nameOk){
       helperText.textContent = "Add your name to finish reserving your seat.";
+    } else if (etransferConfirmed === true && !emailOk){
+      helperText.textContent = "Add a valid email so we can reach you.";
     } else if (etransferConfirmed === true && !partyOk){
       helperText.textContent = "Party size must be at least 1.";
     } else if (etransferConfirmed === true){
@@ -563,6 +574,7 @@
 
   partyInput.addEventListener("input", refreshTotals);
   nameInput.addEventListener("input", updateSubmitState);
+  emailInput.addEventListener("input", updateSubmitState);
 
   yesBtn.addEventListener("click", () => {
     etransferConfirmed = true;
@@ -617,6 +629,16 @@
     }
   }
 
+  async function updatePaymentStatus(id, value){
+    try{
+      await update(ref(db, "registrations/" + id), { paymentDone: value });
+      return true;
+    }catch(err){
+      console.error("Failed to update payment status:", err);
+      return false;
+    }
+  }
+
   /* ---------- Form submit ---------- */
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -626,6 +648,7 @@
 
     const record = {
       name: nameInput.value.trim(),
+      email: emailInput.value.trim(),
       partySize: parseInt(partyInput.value,10),
       total: currentTotal(),
       timestamp: Date.now()
@@ -635,7 +658,6 @@
 
     submitBtn.textContent = "Confirm My Seat";
     if (ok){
-      confirmDetail.textContent = `${record.name}, party of ${record.partySize} — $${record.total.toFixed(2)} received. See you at Shady Nook on Saturday, August 29.`;
       formView.hidden = true;
       confirmView.hidden = false;
       if (adminUnlocked) loadRoster();
@@ -704,18 +726,39 @@
 
     let rows = "";
     regs.forEach(r => {
+      const paid = r.paymentDone === "Yes";
       rows += `<tr data-id="${r.id}">
         <td>${escapeHtml(r.name)}</td>
+        <td>${escapeHtml(r.email || "—")}</td>
         <td>${r.partySize}</td>
+        <td>
+          <select class="payment-select ${paid ? 'is-yes' : 'is-no'}" data-id="${r.id}">
+            <option value="No" ${paid ? "" : "selected"}>No</option>
+            <option value="Yes" ${paid ? "selected" : ""}>Yes</option>
+          </select>
+        </td>
         <td class="amt">$${(r.total||0).toFixed(2)}</td>
         <td><button class="del-btn" data-id="${r.id}">Remove</button></td>
       </tr>`;
     });
 
     wrap.innerHTML = `<table class="roster">
-      <thead><tr><th>Name</th><th>Party Size</th><th>Total Amount</th><th></th></tr></thead>
+      <thead><tr><th>Name</th><th>Email</th><th>Party Size</th><th>Payment Done</th><th>Total Amount</th><th></th></tr></thead>
       <tbody>${rows}</tbody>
     </table>`;
+
+    wrap.querySelectorAll(".payment-select").forEach(sel => {
+      sel.addEventListener("change", async () => {
+        sel.disabled = true;
+        const ok = await updatePaymentStatus(sel.dataset.id, sel.value);
+        sel.disabled = false;
+        sel.classList.toggle("is-yes", sel.value === "Yes");
+        sel.classList.toggle("is-no", sel.value === "No");
+        if (!ok){
+          sel.classList.remove("is-yes","is-no");
+        }
+      });
+    });
 
     wrap.querySelectorAll(".del-btn").forEach(btn => {
       btn.addEventListener("click", async () => {
