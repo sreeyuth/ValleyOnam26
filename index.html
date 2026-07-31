@@ -94,7 +94,7 @@
   .event-meta .tag{ font-family:'JetBrains Mono',monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--cream); background:var(--green-deep); border-radius:5px; padding:3px 7px; margin-top:1px; flex:none; }
   .event-meta a.map-link{ color:var(--green-deep); text-decoration:underline; text-decoration-color:var(--line); text-underline-offset:3px; }
 
-  .pookalam-wrap{ display:flex; align-items:center; justify-content:flex-start; margin:24px 0 6px 0; }
+  .pookalam-wrap{ display:flex; align-items:center; justify-content:center; margin:24px 0 6px 0; }
   .pookalam-wrap svg{ width:140px; height:140px; filter:drop-shadow(0 10px 16px rgba(18,59,41,0.18)); }
 
   .register-col{ position:sticky; top:20px; }
@@ -142,7 +142,7 @@
 
   .field{ margin-bottom:20px; }
   .field label{ display:block; font-size:0.78rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--green-deep); margin-bottom:7px; }
-  .field input[type="text"], .field input[type="number"]{
+  .field input[type="text"], .field input[type="number"], .field input[type="email"]{
     width:100%; padding:12px 14px; border-radius:10px; border:1.5px solid var(--line);
     font-family:'Poppins',sans-serif; font-size:0.98rem; background:var(--cream); color:var(--ink);
     transition:border-color .2s ease, background .2s ease;
@@ -271,7 +271,7 @@
   <nav class="tabs">
     <div class="brandmark">
       <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" stroke="currentColor" stroke-width="1.4"/><path d="M16 6 L18 14 L26 16 L18 18 L16 26 L14 18 L6 16 L14 14 Z" fill="currentColor"/></svg>
-      Onam · Ottawa Valley
+      Onam 2026 · Ottawa Valley
     </div>
     <div class="tab-group" role="tablist">
       <button class="tab-btn active" data-tab="register" role="tab" aria-selected="true">Register</button>
@@ -286,7 +286,6 @@
   <section id="register-panel" class="panel active">
     <div class="landing-grid">
       <div class="details-col">
-        <div class="eyebrow">Onam · Chingam 1451</div>
         <h1>Maveli is coming<br><em>home to the valley.</em></h1>
         <p class="tagline">Once a year the beloved King Mahabali returns to see his people thriving. Join Malayalis across the Ottawa Valley for a full sadhya, pookalam, and an afternoon of song &amp; nostalgia.</p>
         <div class="event-meta">
@@ -319,8 +318,8 @@
       <div class="register-col">
         <div class="ticket-stub" id="ticket-stub">
           <div id="form-view">
-            <h2>Reserve your seat at the sadhya</h2>
-            <p class="sub">$30 per person · Shady Nook Recreation Centre, Pembroke</p>
+            <h2>Registration</h2>
+            <p class="sub">$30 per person</p>
 
             <form id="reg-form" novalidate>
               <div class="field">
@@ -390,7 +389,7 @@
       <div class="admin-summary">
         <div class="summary-card"><div class="num mono" id="stat-regs">0</div><div class="lbl">Registrations</div></div>
         <div class="summary-card"><div class="num mono" id="stat-guests">0</div><div class="lbl">Total guests</div></div>
-        <div class="summary-card"><div class="num mono" id="stat-total">$0.00</div><div class="lbl">Total collected</div></div>
+        <div class="summary-card"><div class="num mono" id="stat-total">$0.00</div><div class="lbl">Total Ticket Sales</div></div>
       </div>
 
       <div class="admin-toolbar">
