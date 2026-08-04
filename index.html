@@ -137,66 +137,81 @@
   }
   .ticket-stub::before{ left:-13px; }
   .ticket-stub::after{ right:-13px; }
-  .ticket-stub h2{ font-size:1.5rem; color:var(--green-deep); font-weight:700; margin-bottom:4px; }
-  .ticket-stub .sub{ font-size:0.86rem; color:var(--ink-soft); margin-bottom:26px; }
+  .ticket-stub h2{ font-size:1.7rem; color:var(--green-deep); font-weight:700; margin-bottom:22px; }
 
-  .field{ margin-bottom:20px; }
-  .field label{ display:block; font-size:0.78rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--green-deep); margin-bottom:7px; }
+  .field{ margin-bottom:24px; }
+  .field label{ display:block; font-size:0.86rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--green-deep); margin-bottom:9px; }
   .field input[type="text"], .field input[type="number"], .field input[type="email"]{
-    width:100%; padding:12px 14px; border-radius:10px; border:1.5px solid var(--line);
-    font-family:'Poppins',sans-serif; font-size:0.98rem; background:var(--cream); color:var(--ink);
+    width:100%; padding:15px 16px; border-radius:11px; border:1.5px solid var(--line);
+    font-family:'Poppins',sans-serif; font-size:1.08rem; background:var(--cream); color:var(--ink);
     transition:border-color .2s ease, background .2s ease;
   }
   .field input:focus{ outline:none; border-color:var(--green); background:var(--paper); }
   .field input:focus-visible{ outline:2px solid var(--gold); outline-offset:1px; }
 
-  .divider-row{ height:1px; background:repeating-linear-gradient(90deg, var(--line) 0 8px, transparent 8px 14px); margin:26px 0; }
+  .ticket-types{ margin-bottom:24px; }
+  .ticket-row{
+    display:flex; align-items:center; justify-content:space-between; gap:14px;
+    padding:13px 4px; border-bottom:1px solid var(--line);
+  }
+  .ticket-row:last-child{ border-bottom:none; }
+  .ticket-name{ font-size:1.06rem; font-weight:600; color:var(--ink); display:flex; align-items:baseline; gap:8px; }
+  .ticket-price{ font-family:'JetBrains Mono',monospace; font-size:0.88rem; font-weight:600; color:var(--vermillion); }
+  .ticket-select{
+    padding:10px 14px; border-radius:10px; border:1.5px solid var(--line); background:var(--cream);
+    font-family:'JetBrains Mono',monospace; font-size:1.05rem; font-weight:600; color:var(--ink); cursor:pointer;
+    min-width:64px; text-align:center;
+  }
+  .ticket-select:focus{ outline:none; border-color:var(--green); background:var(--paper); }
+  .ticket-select:focus-visible{ outline:2px solid var(--gold); outline-offset:1px; }
+
+  .divider-row{ height:1px; background:repeating-linear-gradient(90deg, var(--line) 0 8px, transparent 8px 14px); margin:28px 0; }
 
   .total-box{
-    background:var(--green-deep); border-radius:14px; padding:18px 20px; color:var(--cream);
-    display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:18px;
+    background:var(--green-deep); border-radius:14px; padding:20px 22px; color:var(--cream);
+    display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:22px;
   }
-  .total-box .label{ font-size:0.78rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--gold-light); font-weight:600; }
-  .total-box .amount{ font-family:'JetBrains Mono',monospace; font-size:1.9rem; font-weight:700; color:var(--gold-light); }
+  .total-box .label{ font-size:0.86rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--gold-light); font-weight:600; }
+  .total-box .amount{ font-family:'JetBrains Mono',monospace; font-size:2.2rem; font-weight:700; color:var(--gold-light); }
 
   .etransfer-note{
-    background:var(--cream-deep); border:1px dashed var(--gold); border-radius:12px; padding:14px 16px;
-    font-size:0.9rem; line-height:1.55; color:var(--ink); margin-bottom:22px;
+    background:var(--cream-deep); border:1px dashed var(--gold); border-radius:12px; padding:16px 18px;
+    font-size:1.02rem; line-height:1.6; color:var(--ink); margin-bottom:26px;
   }
   .etransfer-note strong{ font-family:'JetBrains Mono',monospace; color:var(--vermillion); }
   .copy-btn{
-    font-family:'Poppins',sans-serif; font-weight:600; font-size:0.74rem; letter-spacing:0.02em;
-    padding:3px 10px; border-radius:999px; border:1.3px solid var(--gold); background:var(--paper);
+    font-family:'Poppins',sans-serif; font-weight:600; font-size:0.82rem; letter-spacing:0.02em;
+    padding:4px 12px; border-radius:999px; border:1.3px solid var(--gold); background:var(--paper);
     color:var(--green-deep); cursor:pointer; margin:0 4px; vertical-align:middle; transition:all .2s ease;
   }
   .copy-btn:hover{ background:var(--gold-light); }
   .copy-btn.copied{ background:var(--green); border-color:var(--green); color:#fff; }
 
   .field fieldset{ border:none; padding:0; margin:0; }
-  .field legend{ display:block; font-size:0.78rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--green-deep); margin-bottom:9px; padding:0; }
+  .field legend{ display:block; font-size:0.86rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--green-deep); margin-bottom:11px; padding:0; }
   .confirm-toggle{
-    width:100%; display:flex; align-items:center; gap:12px; text-align:left;
-    padding:14px 16px; border-radius:12px; border:1.5px solid var(--line); background:var(--cream);
-    font-family:'Poppins',sans-serif; font-weight:600; font-size:0.92rem; color:var(--ink-soft); cursor:pointer;
+    width:100%; display:flex; align-items:center; gap:14px; text-align:left;
+    padding:17px 18px; border-radius:12px; border:1.5px solid var(--line); background:var(--cream);
+    font-family:'Poppins',sans-serif; font-weight:600; font-size:1.04rem; color:var(--ink-soft); cursor:pointer;
     transition:all .2s ease;
   }
   .confirm-toggle:hover{ border-color:var(--green); }
   .confirm-toggle:focus-visible{ outline:2px solid var(--gold); outline-offset:2px; }
   .confirm-toggle .check-circle{
-    flex:none; width:22px; height:22px; border-radius:50%; border:2px solid var(--line); background:var(--paper);
+    flex:none; width:25px; height:25px; border-radius:50%; border:2px solid var(--line); background:var(--paper);
     position:relative; transition:all .2s ease;
   }
   .confirm-toggle.selected{ background:var(--green); border-color:var(--green); color:#fff; }
   .confirm-toggle.selected .check-circle{ background:#fff; border-color:#fff; }
   .confirm-toggle.selected .check-circle::after{
-    content:""; position:absolute; left:50%; top:46%; width:5px; height:10px;
-    border-right:2.5px solid var(--green); border-bottom:2.5px solid var(--green);
+    content:""; position:absolute; left:50%; top:46%; width:6px; height:11px;
+    border-right:3px solid var(--green); border-bottom:3px solid var(--green);
     transform:translate(-50%,-50%) rotate(45deg);
   }
 
   .submit-btn{
-    width:100%; padding:15px; border-radius:12px; border:none; margin-top:8px;
-    font-family:'Poppins',sans-serif; font-weight:700; font-size:1rem; letter-spacing:0.01em;
+    width:100%; padding:18px; border-radius:12px; border:none; margin-top:10px;
+    font-family:'Poppins',sans-serif; font-weight:700; font-size:1.14rem; letter-spacing:0.01em;
     cursor:not-allowed; background:#D8CFBC; color:#8A7F6A; transition:all .25s ease;
   }
   .submit-btn.enabled{
@@ -205,7 +220,7 @@
   }
   .submit-btn.enabled:hover{ transform:translateY(-1px); }
   .submit-btn:focus-visible{ outline:2px solid var(--green-deep); outline-offset:2px; }
-  .helper-text{ font-size:0.78rem; color:var(--ink-soft); margin-top:8px; text-align:center; }
+  .helper-text{ font-size:0.88rem; color:var(--ink-soft); margin-top:10px; text-align:center; }
 
   .confirmation{
     text-align:center; padding: 20px 6px 6px 6px;
@@ -264,6 +279,7 @@
   table.roster tbody tr:last-child td{ border-bottom:none; }
   table.roster tbody tr:hover{ background:var(--cream-deep); }
   table.roster td.amt{ font-family:'JetBrains Mono',monospace; font-weight:600; color:var(--green-deep); }
+  .party-breakdown{ font-size:0.74rem; color:var(--ink-soft); margin-top:2px; }
   .payment-select{
     font-family:'Poppins',sans-serif; font-weight:600; font-size:0.82rem; padding:6px 10px; border-radius:8px;
     border:1.5px solid var(--line); background:var(--cream); color:var(--ink); cursor:pointer;
@@ -377,7 +393,6 @@
         <div class="ticket-stub" id="ticket-stub">
           <div id="form-view">
             <h2>Registration</h2>
-            <p class="sub">$30 per person</p>
 
             <form id="reg-form" novalidate>
               <div class="field">
@@ -390,9 +405,20 @@
                 <input type="email" id="reg-email" placeholder="you@example.com" autocomplete="email" required>
               </div>
 
-              <div class="field">
-                <label for="reg-party">Party size</label>
-                <input type="number" id="reg-party" min="1" step="1" value="1" required>
+              <div class="field ticket-types">
+                <label>Tickets</label>
+                <div class="ticket-row">
+                  <span class="ticket-name">Children <span class="ticket-price">$20</span></span>
+                  <select id="reg-children" class="ticket-select"></select>
+                </div>
+                <div class="ticket-row">
+                  <span class="ticket-name">Adults <span class="ticket-price">$30</span></span>
+                  <select id="reg-adults" class="ticket-select"></select>
+                </div>
+                <div class="ticket-row">
+                  <span class="ticket-name">Students <span class="ticket-price">$25</span></span>
+                  <select id="reg-students" class="ticket-select"></select>
+                </div>
               </div>
 
               <div class="divider-row"></div>
@@ -498,7 +524,7 @@
   const db = getDatabase(firebaseApp);
 (function(){
   "use strict";
-  const PRICE_PER_PERSON = 30;
+  const TICKET_PRICES = { children: 20, adults: 30, students: 25 };
   const ADMIN_CODE = "1983";
   const PAYMENT_CODE = "1947";
   let adminUnlocked = false;
@@ -599,7 +625,9 @@
   /* ---------- Registration form logic ---------- */
   const nameInput = document.getElementById("reg-name");
   const emailInput = document.getElementById("reg-email");
-  const partyInput = document.getElementById("reg-party");
+  const childrenSelect = document.getElementById("reg-children");
+  const adultsSelect = document.getElementById("reg-adults");
+  const studentsSelect = document.getElementById("reg-students");
   const totalAmountEl = document.getElementById("total-amount");
   const etransferAmountEl = document.getElementById("etransfer-amount");
   const confirmToggleBtn = document.getElementById("etransfer-confirm-btn");
@@ -611,10 +639,36 @@
 
   let etransferConfirmed = false;
 
+  // Populate the three ticket-count dropdowns (0-10) with sensible defaults
+  function populateCountSelect(selectEl, defaultValue){
+    for (let i = 0; i <= 10; i++){
+      const opt = document.createElement("option");
+      opt.value = String(i);
+      opt.textContent = String(i);
+      if (i === defaultValue) opt.selected = true;
+      selectEl.appendChild(opt);
+    }
+  }
+  populateCountSelect(childrenSelect, 0);
+  populateCountSelect(adultsSelect, 1);
+  populateCountSelect(studentsSelect, 0);
+
+  function ticketCounts(){
+    return {
+      children: parseInt(childrenSelect.value, 10) || 0,
+      adults: parseInt(adultsSelect.value, 10) || 0,
+      students: parseInt(studentsSelect.value, 10) || 0
+    };
+  }
+
   function currentTotal(){
-    let size = parseInt(partyInput.value, 10);
-    if (!size || size < 1) size = 1;
-    return size * PRICE_PER_PERSON;
+    const c = ticketCounts();
+    return (c.children * TICKET_PRICES.children) + (c.adults * TICKET_PRICES.adults) + (c.students * TICKET_PRICES.students);
+  }
+
+  function currentPartySize(){
+    const c = ticketCounts();
+    return c.children + c.adults + c.students;
   }
 
   function refreshTotals(){
@@ -628,7 +682,7 @@
   function updateSubmitState(){
     const nameOk = nameInput.value.trim().length > 0;
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim());
-    const partyOk = parseInt(partyInput.value,10) >= 1;
+    const partyOk = currentPartySize() >= 1;
     const ready = nameOk && emailOk && partyOk && etransferConfirmed === true;
     submitBtn.disabled = !ready;
     submitBtn.classList.toggle("enabled", ready);
@@ -639,13 +693,13 @@
     } else if (!emailOk){
       helperText.textContent = "Add a valid email so we can reach you.";
     } else if (!partyOk){
-      helperText.textContent = "Party size must be at least 1.";
+      helperText.textContent = "Select at least one ticket.";
     } else {
       helperText.textContent = "You're all set — confirm below.";
     }
   }
 
-  partyInput.addEventListener("input", refreshTotals);
+  [childrenSelect, adultsSelect, studentsSelect].forEach(sel => sel.addEventListener("change", refreshTotals));
   nameInput.addEventListener("input", updateSubmitState);
   emailInput.addEventListener("input", updateSubmitState);
 
@@ -787,10 +841,14 @@
     submitBtn.disabled = true;
     submitBtn.textContent = "Saving...";
 
+    const counts = ticketCounts();
     const record = {
       name: nameInput.value.trim(),
       email: emailInput.value.trim(),
-      partySize: parseInt(partyInput.value,10),
+      children: counts.children,
+      adults: counts.adults,
+      students: counts.students,
+      partySize: currentPartySize(),
       total: currentTotal(),
       timestamp: Date.now()
     };
@@ -814,7 +872,9 @@
     etransferConfirmed = false;
     confirmToggleBtn.classList.remove("selected");
     confirmToggleBtn.setAttribute("aria-pressed", "false");
-    partyInput.value = 1;
+    childrenSelect.value = "0";
+    adultsSelect.value = "1";
+    studentsSelect.value = "0";
     refreshTotals();
     updateSubmitState();
     confirmView.hidden = true;
@@ -884,19 +944,26 @@
       doc.setFontSize(9);
       doc.text("Shady Nook Recreation Centre, Pembroke \u00b7 Saturday, August 29", 14, 22);
 
-      const body = regs.map(r => [
-        r.name || "",
-        r.email || "",
-        String(r.partySize || 0),
-        "$" + (r.total || 0).toFixed(2),
-        r.paymentDone === "Paid" ? "Paid" : "Not paid",
-        r.confEmailSent ? "Sent" : "Not sent"
-      ]);
+      const body = regs.map(r => {
+        const parts = [];
+        if (r.adults) parts.push(r.adults + "A");
+        if (r.children) parts.push(r.children + "C");
+        if (r.students) parts.push(r.students + "S");
+        return [
+          r.name || "",
+          r.email || "",
+          parts.length ? parts.join(" / ") : "—",
+          String(r.partySize || 0),
+          "$" + (r.total || 0).toFixed(2),
+          r.paymentDone === "Paid" ? "Paid" : "Not paid",
+          r.confEmailSent ? "Sent" : "Not sent"
+        ];
+      });
       const totalGuests = regs.reduce((s,r) => s + (r.partySize||0), 0);
       const totalAmount = regs.reduce((s,r) => s + (r.total||0), 0);
 
       doc.autoTable({
-        head: [["Name","Email","Party Size","Total Amount","Registration Status","Conf Email"]],
+        head: [["Name","Email","Tickets","Party Size","Total Amount","Registration Status","Conf Email"]],
         body: body,
         startY: 28,
         styles: { fontSize: 8 },
@@ -958,10 +1025,16 @@
             <span class="payment-locked ${emailSent ? 'is-paid' : 'is-notpaid'}">${emailSent ? "Conf email sent" : "Conf email not sent"}</span>
           </div>`;
       }
+      const breakdownParts = [];
+      if (r.adults) breakdownParts.push(r.adults + (r.adults === 1 ? " Adult" : " Adults"));
+      if (r.children) breakdownParts.push(r.children + (r.children === 1 ? " Child" : " Children"));
+      if (r.students) breakdownParts.push(r.students + (r.students === 1 ? " Student" : " Students"));
+      const breakdown = breakdownParts.length ? `<div class="party-breakdown">${breakdownParts.join(", ")}</div>` : "";
+
       rows += `<tr data-id="${r.id}">
         <td>${escapeHtml(r.name)}</td>
         <td>${escapeHtml(r.email || "—")}</td>
-        <td>${r.partySize}</td>
+        <td>${r.partySize}${breakdown}</td>
         <td class="amt">$${(r.total||0).toFixed(2)}</td>
         <td>${paymentCell}</td>
         <td><button class="del-btn" data-id="${r.id}">Remove</button></td>
