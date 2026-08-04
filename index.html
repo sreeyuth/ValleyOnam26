@@ -161,6 +161,7 @@
   .field input:focus-visible{ outline:2px solid var(--gold); outline-offset:1px; }
 
   .ticket-types{ margin-bottom:24px; }
+  .ticket-note{ font-size:0.84rem; color:var(--ink-soft); margin:-2px 0 10px 0; font-style:italic; }
   .ticket-row{
     display:flex; align-items:center; justify-content:space-between; gap:14px;
     padding:13px 4px; border-bottom:1px solid var(--line);
@@ -418,6 +419,7 @@
 
               <div class="field ticket-types">
                 <label>Tickets</label>
+                <p class="ticket-note">Free entry for kids under 5 yrs.</p>
                 <div class="ticket-row">
                   <span class="ticket-name">Children (5-12) <span class="ticket-price">$20</span></span>
                   <select id="reg-children" class="ticket-select"></select>
