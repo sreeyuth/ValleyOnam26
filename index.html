@@ -102,7 +102,7 @@
   .event-meta .tag{ font-family:'JetBrains Mono',monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--cream); background:var(--green-deep); border-radius:5px; padding:3px 7px; margin-top:1px; flex:none; }
   .event-meta a.map-link{ color:var(--green-deep); text-decoration:underline; text-decoration-color:var(--line); text-underline-offset:3px; }
 
-  .pookalam-wrap{ display:flex; align-items:center; justify-content:center; margin:24px 0 6px 0; }
+  .pookalam-wrap{ display:flex; align-items:center; justify-content:center; margin:24px 0 0 0; }
   .pookalam-wrap svg{ width:140px; height:140px; filter:drop-shadow(0 10px 16px rgba(18,59,41,0.18)); }
 
   .register-col{ position:sticky; top:20px; }
@@ -114,6 +114,10 @@
     }
     .register-col{ position:static; }
     .pookalam-wrap{ justify-content:center; }
+  }
+
+  @media (min-width: 901px){
+    .landing-grid{ row-gap: 14px; }
   }
 
   /* ===== STORY STRIP ===== */
@@ -434,11 +438,11 @@
 
               <div class="total-box">
                 <span class="label">Total amount</span>
-                <span class="amount mono" id="total-amount">$30.00</span>
+                <span class="amount mono" id="total-amount">$0.00</span>
               </div>
 
               <div class="etransfer-note">
-                E-transfer <strong id="etransfer-amount">$30.00</strong> to Nebu Philip at
+                E-transfer <strong id="etransfer-amount">$0.00</strong> to Nebu Philip at
                 <strong>nebucphilip@outlook.com</strong>
                 <button type="button" class="copy-btn" id="copy-email-btn" aria-label="Copy email address to clipboard">Copy</button>
                 to complete your registration.
@@ -658,7 +662,7 @@
     }
   }
   populateCountSelect(childrenSelect, 0);
-  populateCountSelect(adultsSelect, 1);
+  populateCountSelect(adultsSelect, 0);
 
   function ticketCounts(){
     return {
@@ -878,7 +882,7 @@
     confirmToggleBtn.classList.remove("selected");
     confirmToggleBtn.setAttribute("aria-pressed", "false");
     childrenSelect.value = "0";
-    adultsSelect.value = "1";
+    adultsSelect.value = "0";
     refreshTotals();
     updateSubmitState();
     confirmView.hidden = true;
