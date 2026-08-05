@@ -421,16 +421,12 @@
                 <label>Tickets</label>
                 <p class="ticket-note">Free entry for kids under 5 yrs.</p>
                 <div class="ticket-row">
-                  <span class="ticket-name">Children (5-12) <span class="ticket-price">$20</span></span>
+                  <span class="ticket-name">Children (5-12) <span class="ticket-price">$23</span></span>
                   <select id="reg-children" class="ticket-select"></select>
                 </div>
                 <div class="ticket-row">
-                  <span class="ticket-name">Adults (13+) <span class="ticket-price">$30</span></span>
+                  <span class="ticket-name">Adults (13+) <span class="ticket-price">$46</span></span>
                   <select id="reg-adults" class="ticket-select"></select>
-                </div>
-                <div class="ticket-row">
-                  <span class="ticket-name">Students <span class="ticket-price">$25</span></span>
-                  <select id="reg-students" class="ticket-select"></select>
                 </div>
               </div>
 
@@ -537,7 +533,7 @@
   const db = getDatabase(firebaseApp);
 (function(){
   "use strict";
-  const TICKET_PRICES = { children: 20, adults: 30, students: 25 };
+  const TICKET_PRICES = { children: 23, adults: 46 };
   const ADMIN_CODE = "1983";
   const PAYMENT_CODE = "1947";
   let adminUnlocked = false;
@@ -640,7 +636,6 @@
   const emailInput = document.getElementById("reg-email");
   const childrenSelect = document.getElementById("reg-children");
   const adultsSelect = document.getElementById("reg-adults");
-  const studentsSelect = document.getElementById("reg-students");
   const totalAmountEl = document.getElementById("total-amount");
   const etransferAmountEl = document.getElementById("etransfer-amount");
   const confirmToggleBtn = document.getElementById("etransfer-confirm-btn");
@@ -652,7 +647,7 @@
 
   let etransferConfirmed = false;
 
-  // Populate the three ticket-count dropdowns (0-10) with sensible defaults
+  // Populate the ticket-count dropdowns (0-10) with sensible defaults
   function populateCountSelect(selectEl, defaultValue){
     for (let i = 0; i <= 10; i++){
       const opt = document.createElement("option");
@@ -664,24 +659,22 @@
   }
   populateCountSelect(childrenSelect, 0);
   populateCountSelect(adultsSelect, 1);
-  populateCountSelect(studentsSelect, 0);
 
   function ticketCounts(){
     return {
       children: parseInt(childrenSelect.value, 10) || 0,
-      adults: parseInt(adultsSelect.value, 10) || 0,
-      students: parseInt(studentsSelect.value, 10) || 0
+      adults: parseInt(adultsSelect.value, 10) || 0
     };
   }
 
   function currentTotal(){
     const c = ticketCounts();
-    return (c.children * TICKET_PRICES.children) + (c.adults * TICKET_PRICES.adults) + (c.students * TICKET_PRICES.students);
+    return (c.children * TICKET_PRICES.children) + (c.adults * TICKET_PRICES.adults);
   }
 
   function currentPartySize(){
     const c = ticketCounts();
-    return c.children + c.adults + c.students;
+    return c.children + c.adults;
   }
 
   function refreshTotals(){
@@ -712,7 +705,7 @@
     }
   }
 
-  [childrenSelect, adultsSelect, studentsSelect].forEach(sel => sel.addEventListener("change", refreshTotals));
+  [childrenSelect, adultsSelect].forEach(sel => sel.addEventListener("change", refreshTotals));
   nameInput.addEventListener("input", updateSubmitState);
   emailInput.addEventListener("input", updateSubmitState);
 
@@ -860,7 +853,6 @@
       email: emailInput.value.trim(),
       children: counts.children,
       adults: counts.adults,
-      students: counts.students,
       partySize: currentPartySize(),
       total: currentTotal(),
       timestamp: Date.now()
@@ -887,7 +879,6 @@
     confirmToggleBtn.setAttribute("aria-pressed", "false");
     childrenSelect.value = "0";
     adultsSelect.value = "1";
-    studentsSelect.value = "0";
     refreshTotals();
     updateSubmitState();
     confirmView.hidden = true;
@@ -961,7 +952,6 @@
         const parts = [];
         if (r.adults) parts.push(r.adults + "A");
         if (r.children) parts.push(r.children + "C");
-        if (r.students) parts.push(r.students + "S");
         return [
           r.name || "",
           r.email || "",
@@ -1041,7 +1031,6 @@
       const breakdownParts = [];
       if (r.adults) breakdownParts.push(r.adults + (r.adults === 1 ? " Adult" : " Adults"));
       if (r.children) breakdownParts.push(r.children + (r.children === 1 ? " Child" : " Children"));
-      if (r.students) breakdownParts.push(r.students + (r.students === 1 ? " Student" : " Students"));
       const breakdown = breakdownParts.length ? `<div class="party-breakdown">${breakdownParts.join(", ")}</div>` : "";
 
       rows += `<tr data-id="${r.id}">
