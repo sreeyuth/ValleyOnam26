@@ -379,7 +379,7 @@
         <h1>Maveli is coming<br><em>home to the valley.</em></h1>
         <p class="tagline">Once a year the beloved King Mahabali returns to see his people thriving. Join Malayalis across the Ottawa Valley for a full sadhya, pookalam, and an afternoon of song &amp; nostalgia.</p>
         <div class="event-meta">
-          <div class="row"><span class="tag">Date</span> Saturday, August 29</div>
+          <div class="row"><span class="tag">Date</span> Saturday, August 29, 2026</div>
           <div class="row"><span class="tag">Time</span> 11:00 AM – 4:00 PM</div>
           <div class="row"><span class="tag">Venue</span>
             <span>Shady Nook Recreation Centre — 80 Richardson Crescent, Pembroke<br>
@@ -828,13 +828,22 @@
       console.error("EmailJS is not configured yet — add your Service ID, Template ID, and Public Key.");
       return false;
     }
+    const adults = record.adults || 0;
+    const children = record.children || 0;
+    const breakdownParts = [];
+    if (adults) breakdownParts.push(adults + (adults === 1 ? " Adult" : " Adults"));
+    if (children) breakdownParts.push(children + (children === 1 ? " Child" : " Children"));
+    const partyBreakdown = breakdownParts.length ? breakdownParts.join(", ") : String(record.partySize || 0);
     try{
       await window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
         to_name: record.name,
         to_email: record.email,
         party_size: record.partySize,
+        adults: adults,
+        children: children,
+        party_breakdown: partyBreakdown,
         total_amount: "$" + (record.total || 0).toFixed(2),
-        event_date: "Saturday, August 29",
+        event_date: "Saturday, August 29, 2026",
         venue: "Shady Nook Recreation Centre, 80 Richardson Crescent, Pembroke"
       }, { publicKey: EMAILJS_PUBLIC_KEY });
       return true;
@@ -950,7 +959,7 @@
       doc.setFontSize(14);
       doc.text("Onam 2026 \u00b7 Ottawa Valley \u2014 Registration Roster", 14, 16);
       doc.setFontSize(9);
-      doc.text("Shady Nook Recreation Centre, Pembroke \u00b7 Saturday, August 29", 14, 22);
+      doc.text("Shady Nook Recreation Centre, Pembroke \u00b7 Saturday, August 29, 2026", 14, 22);
 
       const body = regs.map(r => {
         const parts = [];
