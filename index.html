@@ -972,7 +972,7 @@
           parts.length ? parts.join(" / ") : "—",
           String(r.partySize || 0),
           "$" + (r.total || 0).toFixed(2),
-          r.paymentDone === "Paid" ? "Paid" : "Not paid",
+          r.paymentDone === "Paid" ? "Paid" : "Under verification",
           r.confEmailSent ? "Sent" : "Not sent"
         ];
       });
@@ -1031,14 +1031,14 @@
           : `<button class="email-btn" data-id="${r.id}">Send conf email</button>`;
         paymentCell = `<div class="status-cell">
             <select class="payment-select ${paid ? 'is-paid' : 'is-notpaid'}" data-id="${r.id}">
-              <option value="Not paid" ${paid ? "" : "selected"}>Not paid</option>
+              <option value="Under verification" ${paid ? "" : "selected"}>Under verification</option>
               <option value="Paid" ${paid ? "selected" : ""}>Paid</option>
             </select>
             ${emailBtn}
           </div>`;
       } else {
         paymentCell = `<div class="status-cell">
-            <span class="payment-locked ${paid ? 'is-paid' : 'is-notpaid'}">${paid ? "Paid" : "Not paid"}</span>
+            <span class="payment-locked ${paid ? 'is-paid' : 'is-notpaid'}">${paid ? "Paid" : "Under verification"}</span>
             <span class="payment-locked ${emailSent ? 'is-paid' : 'is-notpaid'}">${emailSent ? "Conf email sent" : "Conf email not sent"}</span>
           </div>`;
       }
@@ -1068,7 +1068,7 @@
         const ok = await updatePaymentStatus(sel.dataset.id, sel.value);
         sel.disabled = false;
         sel.classList.toggle("is-paid", sel.value === "Paid");
-        sel.classList.toggle("is-notpaid", sel.value === "Not paid");
+        sel.classList.toggle("is-notpaid", sel.value === "Under verification");
         if (!ok){
           sel.classList.remove("is-paid","is-notpaid");
         }
