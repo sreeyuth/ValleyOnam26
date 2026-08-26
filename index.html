@@ -272,11 +272,12 @@
   .admin-gate .error-msg{ color:var(--vermillion); font-size:0.82rem; margin-top:10px; min-height:1.2em; }
 
   .admin-content{ }
-  .admin-summary{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:28px; }
+  .admin-summary{ display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-bottom:28px; }
   .summary-card{ background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:18px; text-align:center; }
   .summary-card .num{ font-family:'JetBrains Mono',monospace; font-size:1.7rem; font-weight:700; color:var(--green-deep); }
   .summary-card .lbl{ font-size:0.74rem; letter-spacing:0.05em; text-transform:uppercase; color:var(--ink-soft); margin-top:4px; }
-  @media (max-width:640px){ .admin-summary{ grid-template-columns:1fr; } }
+  @media (max-width:900px){ .admin-summary{ grid-template-columns:repeat(3,1fr); } }
+  @media (max-width:640px){ .admin-summary{ grid-template-columns:repeat(2,1fr); } }
 
   .admin-toolbar{ display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:10px; }
   .admin-toolbar h2{ font-size:1.2rem; color:var(--green-deep); }
@@ -489,7 +490,9 @@
     <div class="admin-content" id="admin-content" hidden>
       <div class="admin-summary">
         <div class="summary-card"><div class="num mono" id="stat-regs">0</div><div class="lbl">Registrations</div></div>
-        <div class="summary-card"><div class="num mono" id="stat-guests">0</div><div class="lbl">Total guests</div></div>
+        <div class="summary-card"><div class="num mono" id="stat-guests">0</div><div class="lbl">Total Guests</div></div>
+        <div class="summary-card"><div class="num mono" id="stat-adults">0</div><div class="lbl">Adults</div></div>
+        <div class="summary-card"><div class="num mono" id="stat-children">0</div><div class="lbl">Children</div></div>
         <div class="summary-card"><div class="num mono" id="stat-total">$0.00</div><div class="lbl">Total Ticket Sales</div></div>
       </div>
 
@@ -977,6 +980,8 @@
         ];
       });
       const totalGuests = regs.reduce((s,r) => s + (r.partySize||0), 0);
+      const totalAdults = regs.reduce((s,r) => s + (r.adults||0), 0);
+      const totalChildren = regs.reduce((s,r) => s + (r.children||0), 0);
       const totalAmount = regs.reduce((s,r) => s + (r.total||0), 0);
 
       doc.autoTable({
@@ -989,7 +994,7 @@
 
       const finalY = (doc.lastAutoTable && doc.lastAutoTable.finalY) ? doc.lastAutoTable.finalY : 28;
       doc.setFontSize(9);
-      doc.text(`Total registrations: ${regs.length}   Total guests: ${totalGuests}   Total ticket sales: $${totalAmount.toFixed(2)}`, 14, finalY + 10);
+      doc.text(`Total registrations: ${regs.length}   Total guests: ${totalGuests} (${totalAdults} Adults, ${totalChildren} Children)   Total ticket sales: $${totalAmount.toFixed(2)}`, 14, finalY + 10);
 
       doc.save("onam-2026-registrations.pdf");
     }catch(err){
@@ -1008,8 +1013,12 @@
 
     document.getElementById("stat-regs").textContent = regs.length;
     const totalGuests = regs.reduce((s,r) => s + (r.partySize||0), 0);
+    const totalAdults = regs.reduce((s,r) => s + (r.adults||0), 0);
+    const totalChildren = regs.reduce((s,r) => s + (r.children||0), 0);
     const totalAmount = regs.reduce((s,r) => s + (r.total||0), 0);
     document.getElementById("stat-guests").textContent = totalGuests;
+    document.getElementById("stat-adults").textContent = totalAdults;
+    document.getElementById("stat-children").textContent = totalChildren;
     document.getElementById("stat-total").textContent = "$" + totalAmount.toFixed(2);
 
     if (regs.length === 0){
