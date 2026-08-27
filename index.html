@@ -272,6 +272,23 @@
   .admin-gate .error-msg{ color:var(--vermillion); font-size:0.82rem; margin-top:10px; min-height:1.2em; }
 
   .admin-content{ }
+  .registration-toggle{
+    display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;
+    background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:16px 20px; margin-bottom:20px;
+    box-shadow:0 8px 18px -14px rgba(42,27,16,0.25);
+  }
+  .registration-toggle span{ font-size:0.96rem; color:var(--ink); }
+  .registration-toggle strong.reg-open{ color:var(--green); }
+  .registration-toggle strong.reg-closed{ color:var(--vermillion); }
+  .toggle-reg-btn{
+    font-family:'Poppins',sans-serif; font-weight:700; font-size:0.88rem; padding:10px 20px; border-radius:999px;
+    border:none; cursor:pointer; transition:all .2s ease; color:#fff;
+  }
+  .toggle-reg-btn[data-current="open"]{ background:var(--vermillion); }
+  .toggle-reg-btn[data-current="closed"]{ background:var(--green); }
+  .toggle-reg-btn:hover{ opacity:0.9; }
+  .toggle-reg-btn:disabled{ opacity:0.6; cursor:not-allowed; }
+
   .admin-summary{ display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-bottom:28px; }
   .summary-card{ background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:18px; text-align:center; }
   .summary-card .num{ font-family:'JetBrains Mono',monospace; font-size:1.7rem; font-weight:700; color:var(--green-deep); }
@@ -471,6 +488,11 @@
             <p>Committee member will send confirmation email in a short while once the e-transfer is confirmed received.</p>
             <button type="button" id="register-another">Register another party</button>
           </div>
+
+          <div id="closed-view" class="confirmation" hidden>
+            <h3>Registration is now closed</h3>
+            <p>See you soon! Please contact Sree (<a href="mailto:sreeyuth@gmail.com">sreeyuth@gmail.com</a>) if you have any questions.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -488,6 +510,11 @@
     </div>
 
     <div class="admin-content" id="admin-content" hidden>
+      <div class="registration-toggle" id="registration-toggle">
+        <span>Registration is currently <strong id="reg-status-label">—</strong></span>
+        <button class="toggle-reg-btn" id="toggle-reg-btn">…</button>
+      </div>
+
       <div class="admin-summary">
         <div class="summary-card"><div class="num mono" id="stat-regs">0</div><div class="lbl">Registrations</div></div>
         <div class="summary-card"><div class="num mono" id="stat-guests">0</div><div class="lbl">Total Guests</div></div>
@@ -753,6 +780,37 @@
 
   refreshTotals();
 
+  /* ---------- Registration open/closed toggle ---------- */
+  async function getRegistrationOpen(){
+    try{
+      const snap = await get(ref(db, "settings/registrationOpen"));
+      // Unset (never toggled) defaults to open; only an explicit false closes it.
+      return snap.exists() ? snap.val() !== false : true;
+    }catch(err){
+      console.error("Failed to check registration status:", err);
+      return true; // fail open so a Firebase hiccup never accidentally blocks registration
+    }
+  }
+
+  async function setRegistrationOpen(isOpen){
+    try{
+      await set(ref(db, "settings/registrationOpen"), isOpen);
+      return true;
+    }catch(err){
+      console.error("Failed to update registration status:", err);
+      return false;
+    }
+  }
+
+  (async () => {
+    const isOpen = await getRegistrationOpen();
+    if (!isOpen){
+      formView.hidden = true;
+      confirmView.hidden = true;
+      document.getElementById("closed-view").hidden = false;
+    }
+  })();
+
   /* ---------- Storage helpers (Firebase Realtime Database) ---------- */
   async function saveRegistration(record){
     try{
@@ -916,6 +974,7 @@
       adminContent.hidden = false;
       adminError.textContent = "";
       loadRoster();
+      refreshRegistrationToggleUI();
     } else {
       adminError.textContent = "Incorrect passcode. Try again.";
       adminPasswordInput.value = "";
@@ -924,6 +983,29 @@
   }
   unlockBtn.addEventListener("click", tryUnlock);
   adminPasswordInput.addEventListener("keydown", (e) => { if (e.key === "Enter") tryUnlock(); });
+
+  /* ---------- Registration open/closed admin toggle ---------- */
+  async function refreshRegistrationToggleUI(){
+    const isOpen = await getRegistrationOpen();
+    const label = document.getElementById("reg-status-label");
+    const btn = document.getElementById("toggle-reg-btn");
+    label.textContent = isOpen ? "OPEN" : "CLOSED";
+    label.className = isOpen ? "reg-open" : "reg-closed";
+    btn.textContent = isOpen ? "Close Registration" : "Reopen Registration";
+    btn.dataset.current = isOpen ? "open" : "closed";
+  }
+  document.getElementById("toggle-reg-btn").addEventListener("click", async () => {
+    const btn = document.getElementById("toggle-reg-btn");
+    const currentlyOpen = btn.dataset.current === "open";
+    btn.disabled = true;
+    const ok = await setRegistrationOpen(!currentlyOpen);
+    btn.disabled = false;
+    if (ok){
+      refreshRegistrationToggleUI();
+    } else {
+      alert("Could not update registration status. Please try again.");
+    }
+  });
 
   /* ---------- Payment Status gate (separate passcode) ---------- */
   const paymentGate = document.getElementById("payment-gate");
