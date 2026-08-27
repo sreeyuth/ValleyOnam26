@@ -970,6 +970,7 @@
         if (r.adults) parts.push(r.adults + "A");
         if (r.children) parts.push(r.children + "C");
         return [
+          "",
           r.name || "",
           r.email || "",
           parts.length ? parts.join(" / ") : "—",
@@ -985,11 +986,20 @@
       const totalAmount = regs.reduce((s,r) => s + (r.total||0), 0);
 
       doc.autoTable({
-        head: [["Name","Email","Tickets","Party Size","Total Amount","Registration Status","Conf Email"]],
+        head: [["Attendance","Name","Email","Tickets","Party Size","Total Amount","Payment","Conf Email"]],
         body: body,
         startY: 28,
         styles: { fontSize: 8 },
-        headStyles: { fillColor: [18, 59, 41] }
+        headStyles: { fillColor: [18, 59, 41] },
+        columnStyles: { 0: { cellWidth: 20, halign: "center" } },
+        didDrawCell: function(data){
+          if (data.section === "body" && data.column.index === 0){
+            const size = 9;
+            const x = data.cell.x + (data.cell.width - size) / 2;
+            const y = data.cell.y + (data.cell.height - size) / 2;
+            doc.rect(x, y, size, size);
+          }
+        }
       });
 
       const finalY = (doc.lastAutoTable && doc.lastAutoTable.finalY) ? doc.lastAutoTable.finalY : 28;
