@@ -3,219 +3,186 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Onam in the Ottawa Valley — Registration</title>
+<title>Chalk River Social Club — Halloween Haunt at Canada's Wonderland</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --cream: #FBF2DF;
-    --cream-deep: #F2E3BE;
-    --paper: #FFFCF6;
-    --ink: #2A1B10;
-    --ink-soft: #5B4633;
-    --green-deep: #123B29;
-    --green: #1F6B45;
-    --green-leaf: #4F8F5C;
-    --gold: #C99A2E;
-    --gold-light: #E7C468;
-    --vermillion: #BE4526;
-    --purple: #7B3A66;
-    --rose: #C6584F;
-    --line: rgba(42,27,16,0.14);
-    --shadow: 0 18px 40px -20px rgba(18,59,41,0.35);
+    --bg: #0A0710;
+    --panel: #161022;
+    --panel-2: #1D1630;
+    --ink: #F3EEEA;
+    --ink-soft: #C9C1D6;
+    --line: rgba(255,255,255,0.12);
+    --orange: #FF7A1A;
+    --orange-deep: #D9560A;
+    --purple: #8B3FE0;
+    --purple-deep: #5B21A8;
+    --green: #3DAA5C;
+    --rose: #E0455A;
+    --shadow: 0 20px 44px -18px rgba(0,0,0,0.6);
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
     margin:0;
-    background:var(--cream);
+    background:var(--bg);
     color:var(--ink);
     font-family:'Poppins',sans-serif;
-    font-weight:400;
     -webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3{ font-family:'Fraunces', serif; margin:0; }
-  .mono{ font-family:'JetBrains Mono', monospace; }
-
-  /* subtle textured background */
-  body{
     background-image:
-      radial-gradient(circle at 8% 12%, rgba(199,154,46,0.10), transparent 40%),
-      radial-gradient(circle at 92% 8%, rgba(190,69,38,0.08), transparent 38%),
-      radial-gradient(circle at 50% 100%, rgba(31,107,69,0.10), transparent 45%);
+      radial-gradient(circle at 10% 0%, rgba(139,63,224,0.18), transparent 45%),
+      radial-gradient(circle at 90% 10%, rgba(255,122,26,0.14), transparent 40%),
+      radial-gradient(circle at 50% 100%, rgba(139,63,224,0.12), transparent 45%);
   }
-
   a{ color:inherit; }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  h1,h2,h3{ margin:0; }
 
-  /* ===== HERO (compact top strip) ===== */
-  .hero{
-    background: linear-gradient(180deg, var(--green-deep) 0%, var(--green) 100%);
-    position:relative;
-    overflow:hidden;
-  }
+  /* ===== HERO / NAV ===== */
+  .hero{ background:linear-gradient(180deg, #0A0710 0%, #150C22 100%); border-bottom:1px solid var(--line); }
   nav.tabs{
     max-width:1200px; margin:0 auto; padding:18px 24px;
-    display:flex; align-items:center; justify-content:space-between; gap:16px;
-    position:relative; z-index:3;
+    display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
   }
-  .brandmark{ display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-weight:700; letter-spacing:0.02em; font-size:1.05rem; color:var(--gold-light); }
-  .brandmark svg{ width:26px; height:26px; }
-  .tab-group{ display:flex; gap:6px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.16); border-radius:999px; padding:5px; }
+  .brandmark{ display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:0.02em; font-size:1.05rem; color:var(--orange); }
+  .brandmark svg{ width:24px; height:24px; }
+  .tab-group{ display:flex; gap:6px; background:rgba(255,255,255,0.06); border:1px solid var(--line); border-radius:999px; padding:5px; }
   .tab-btn{
     appearance:none; border:none; cursor:pointer; padding:9px 20px; border-radius:999px;
     font-family:'Poppins',sans-serif; font-weight:600; font-size:0.86rem; letter-spacing:0.02em;
-    color:rgba(251,242,223,0.75); background:transparent; transition:all .25s ease;
+    color:rgba(243,238,234,0.7); background:transparent; transition:all .25s ease;
   }
-  .tab-btn.active{ background:var(--gold-light); color:var(--green-deep); box-shadow:var(--shadow); }
-  .tab-btn:not(.active):hover{ color:var(--cream); background:rgba(255,255,255,0.10); }
-  .tab-btn:focus-visible{ outline:2px solid var(--gold-light); outline-offset:2px; }
+  .tab-btn.active{ background:var(--orange); color:#1a0d02; box-shadow:var(--shadow); }
+  .tab-btn:not(.active):hover{ color:var(--ink); background:rgba(255,255,255,0.08); }
+  .tab-btn:focus-visible{ outline:2px solid var(--orange); outline-offset:2px; }
 
-  @media (max-width: 760px){
-    nav.tabs{ flex-wrap:wrap; }
-  }
-
-  /* ===== LANDING GRID (details left, registration right) ===== */
-  main{ max-width:1200px; margin:0 auto; padding: 40px 24px 90px 24px; }
-
-  .landing-grid{
-    display:grid;
-    grid-template-columns: 1.05fr 0.95fr;
-    grid-template-areas: "details register" "story register";
-    gap:44px; align-items:start;
-  }
-  .details-col{ grid-area: details; }
-  .story-strip{ grid-area: story; }
-  .register-col{ grid-area: register; }
-
-  .details-col .eyebrow{
-    font-family:'JetBrains Mono', monospace; font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase;
-    color:var(--vermillion); margin-bottom:14px; display:flex; align-items:center; gap:10px;
-  }
-  .details-col .eyebrow::before{ content:""; width:26px; height:1px; background:var(--vermillion); display:inline-block; }
-  .details-col h1{ font-size:clamp(2rem, 3.4vw, 2.9rem); line-height:1.06; font-weight:700; color:var(--green-deep); }
-  .details-col h1 em{ font-style:italic; font-weight:400; color:var(--vermillion); }
-  .details-col p.tagline{ margin-top:14px; max-width:48ch; font-size:1rem; line-height:1.6; color:var(--ink-soft); }
-
-  .event-meta{ margin-top:24px; display:flex; flex-direction:column; gap:10px; }
-  .event-meta .row{ display:flex; align-items:flex-start; gap:10px; font-size:0.92rem; color:var(--ink); }
-  .event-meta .tag{ font-family:'JetBrains Mono',monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--cream); background:var(--green-deep); border-radius:5px; padding:3px 7px; margin-top:1px; flex:none; }
-  .event-meta a.map-link{ color:var(--green-deep); text-decoration:underline; text-decoration-color:var(--line); text-underline-offset:3px; }
-
-  .pookalam-wrap{ display:flex; align-items:center; justify-content:center; margin:24px 0 0 0; }
-  .pookalam-wrap svg{ width:140px; height:140px; filter:drop-shadow(0 10px 16px rgba(18,59,41,0.18)); }
-
-  .register-col{ position:sticky; top:20px; }
-
-  @media (max-width: 900px){
-    .landing-grid{
-      grid-template-columns:1fr;
-      grid-template-areas: "details" "register" "story";
-    }
-    .register-col{ position:static; }
-    .pookalam-wrap{ justify-content:center; }
-  }
-
-  @media (min-width: 901px){
-    .landing-grid{ row-gap: 14px; grid-template-rows: min-content min-content; }
-  }
-
-  /* ===== STORY STRIP ===== */
-  .story-strip{ display:grid; grid-template-columns:1fr; gap:12px; }
-  .story-card{
-    display:flex; align-items:center; gap:14px;
-    background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:12px 16px;
-    box-shadow:0 8px 18px -14px rgba(42,27,16,0.25);
-  }
-  .story-card svg{ width:90px; height:54px; flex:none; display:block; }
-  .story-card h3{ font-size:0.96rem; font-weight:700; color:var(--green-deep); margin-bottom:2px; }
-  .story-card p{ font-size:0.8rem; line-height:1.5; color:var(--ink-soft); margin:0; }
-
-  /* ===== PANELS ===== */
   .panel{ display:none; animation:fade .35s ease; }
   .panel.active{ display:block; }
   @keyframes fade{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
 
-  /* ===== REGISTER CARD (ticket stub) ===== */
-  .ticket-stub{
-    background:var(--paper);
-    border-radius:20px;
+  /* ===== LANDING GRID ===== */
+  main{ max-width:1200px; margin:0 auto; padding: 40px 24px 90px 24px; }
+  .landing-grid{
+    display:grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap:44px; align-items:start;
+  }
+  .register-col{ position:sticky; top:20px; }
+
+  @media (max-width:900px){
+    .landing-grid{ grid-template-columns:1fr; }
+    .register-col{ position:static; }
+    .highlights-col{ grid-template-columns:1fr; }
+  }
+
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace; font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--orange); margin-bottom:14px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{ content:""; width:26px; height:1px; background:var(--orange); display:inline-block; }
+  .details-col h1{
+    font-family:'Creepster', cursive; font-weight:400; letter-spacing:0.02em;
+    font-size:clamp(2.4rem, 5vw, 3.6rem); line-height:1.05; color:#fff;
+    text-shadow: 0 0 18px rgba(255,122,26,0.45), 0 0 2px rgba(0,0,0,0.8);
+  }
+  .details-col h1 span{ color:var(--orange); }
+  .details-col p.tagline{ margin-top:16px; max-width:50ch; font-size:1.02rem; line-height:1.65; color:var(--ink-soft); }
+
+  .event-meta{ margin-top:24px; display:flex; flex-direction:column; gap:10px; }
+  .event-meta .row{ display:flex; align-items:flex-start; gap:10px; font-size:0.94rem; color:var(--ink); }
+  .event-meta .tag{ font-family:'JetBrains Mono',monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:#1a0d02; background:var(--orange); border-radius:5px; padding:3px 8px; margin-top:1px; flex:none; }
+  .event-meta a.map-link{ color:var(--orange); text-decoration:underline; text-decoration-color:rgba(255,122,26,0.4); text-underline-offset:3px; }
+  .deadline-note{
+    margin-top:14px; display:inline-flex; align-items:center; gap:8px; font-size:0.86rem; font-weight:600;
+    color:var(--rose); background:rgba(224,69,90,0.12); border:1px solid rgba(224,69,90,0.4); border-radius:10px; padding:9px 14px;
+  }
+
+  /* ===== TICKET OPTION HIGHLIGHT CARDS ===== */
+  .highlights-col{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:16px; }
+  .age-note{ margin-top:14px; font-size:0.84rem; line-height:1.5; color:var(--ink-soft); font-style:italic; }
+  .option-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:16px 14px 18px 14px;
     box-shadow:var(--shadow);
-    max-width:600px; margin:0 auto;
-    position:relative;
-    padding: 34px 34px 30px 34px;
-    border:1px solid var(--line);
   }
-  .ticket-stub::before, .ticket-stub::after{
-    content:""; position:absolute; width:26px; height:26px; border-radius:50%;
-    background:var(--cream); top:50%; transform:translateY(-50%);
+  .option-card.opt1{ border-top:3px solid var(--orange); }
+  .option-card.opt2{ border-top:3px solid var(--purple); }
+  .option-card h3{ font-size:0.96rem; font-weight:700; color:#fff; margin-bottom:2px; white-space:nowrap; }
+  .option-card .opt-price{ font-family:'JetBrains Mono',monospace; font-size:0.86rem; color:var(--orange); font-weight:700; margin-bottom:12px; display:block; }
+  .option-card.opt2 .opt-price{ color:var(--purple); }
+  .option-card ul{ margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:7px; }
+  .option-card li{ font-size:0.84rem; line-height:1.4; color:var(--ink-soft); display:flex; gap:8px; }
+  .option-card li::before{ content:"✓"; color:var(--orange); font-weight:700; flex:none; }
+  .option-card.opt2 li::before{ color:var(--purple); }
+
+  /* ===== REGISTRATION CARD ===== */
+  .ticket-stub{
+    background:var(--panel); border-radius:20px; box-shadow:var(--shadow); border:1px solid var(--line);
+    padding:34px 34px 30px 34px;
   }
-  .ticket-stub::before{ left:-13px; }
-  .ticket-stub::after{ right:-13px; }
-  .ticket-stub h2{ font-size:1.7rem; color:var(--green-deep); font-weight:700; margin-bottom:22px; }
+  .ticket-stub h2{ font-size:1.7rem; font-weight:700; color:#fff; margin-bottom:22px; }
 
   .field{ margin-bottom:24px; }
-  .field label{ display:block; font-size:0.86rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--green-deep); margin-bottom:9px; }
-  .field input[type="text"], .field input[type="number"], .field input[type="email"]{
+  .field label{ display:block; font-size:0.86rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--orange); margin-bottom:9px; }
+  .field input[type="text"], .field input[type="email"]{
     width:100%; padding:15px 16px; border-radius:11px; border:1.5px solid var(--line);
-    font-family:'Poppins',sans-serif; font-size:1.08rem; background:var(--cream); color:var(--ink);
-    transition:border-color .2s ease, background .2s ease;
+    font-family:'Poppins',sans-serif; font-size:1.08rem; background:var(--panel-2); color:var(--ink);
+    transition:border-color .2s ease;
   }
-  .field input:focus{ outline:none; border-color:var(--green); background:var(--paper); }
-  .field input:focus-visible{ outline:2px solid var(--gold); outline-offset:1px; }
+  .field input:focus{ outline:none; border-color:var(--orange); }
+  .field input:focus-visible{ outline:2px solid var(--orange); outline-offset:1px; }
 
   .ticket-types{ margin-bottom:24px; }
   .ticket-note{ font-size:0.84rem; color:var(--ink-soft); margin:-2px 0 10px 0; font-style:italic; }
-  .ticket-row{
-    display:flex; align-items:center; justify-content:space-between; gap:14px;
-    padding:13px 4px; border-bottom:1px solid var(--line);
-  }
+  .ticket-row{ display:grid; grid-template-columns:1fr 56px auto; align-items:center; gap:14px; padding:13px 4px; border-bottom:1px solid var(--line); }
   .ticket-row:last-child{ border-bottom:none; }
-  .ticket-name{ font-size:1.06rem; font-weight:600; color:var(--ink); display:flex; align-items:baseline; gap:8px; }
-  .ticket-price{ font-family:'JetBrains Mono',monospace; font-size:0.88rem; font-weight:600; color:var(--vermillion); }
+  .ticket-name{ font-size:1.02rem; font-weight:600; color:var(--ink); display:flex; flex-direction:column; gap:2px; }
+  .ticket-name small{ font-size:0.74rem; font-weight:400; color:var(--ink-soft); }
+  .ticket-price{ font-family:'JetBrains Mono',monospace; font-size:0.86rem; font-weight:600; color:var(--orange); text-align:right; }
   .ticket-select{
-    padding:10px 14px; border-radius:10px; border:1.5px solid var(--line); background:var(--cream);
+    padding:10px 14px; border-radius:10px; border:1.5px solid var(--line); background:var(--panel-2);
     font-family:'JetBrains Mono',monospace; font-size:1.05rem; font-weight:600; color:var(--ink); cursor:pointer;
     min-width:64px; text-align:center;
   }
-  .ticket-select:focus{ outline:none; border-color:var(--green); background:var(--paper); }
-  .ticket-select:focus-visible{ outline:2px solid var(--gold); outline-offset:1px; }
+  .ticket-select:focus{ outline:none; border-color:var(--orange); }
 
   .divider-row{ height:1px; background:repeating-linear-gradient(90deg, var(--line) 0 8px, transparent 8px 14px); margin:28px 0; }
 
   .total-box{
-    background:var(--green-deep); border-radius:14px; padding:20px 22px; color:var(--cream);
+    background:linear-gradient(135deg, var(--purple-deep), var(--orange-deep));
+    border-radius:14px; padding:20px 22px; color:#fff;
     display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:22px;
   }
-  .total-box .label{ font-size:0.86rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--gold-light); font-weight:600; }
-  .total-box .amount{ font-family:'JetBrains Mono',monospace; font-size:2.2rem; font-weight:700; color:var(--gold-light); }
+  .total-box .label{ font-size:0.86rem; letter-spacing:0.06em; text-transform:uppercase; color:rgba(255,255,255,0.85); font-weight:600; }
+  .total-box .amount{ font-family:'JetBrains Mono',monospace; font-size:2.2rem; font-weight:700; }
 
   .etransfer-note{
-    background:var(--cream-deep); border:1px dashed var(--gold); border-radius:12px; padding:16px 18px;
+    background:var(--panel-2); border:1px dashed var(--orange); border-radius:12px; padding:16px 18px;
     font-size:1.02rem; line-height:1.6; color:var(--ink); margin-bottom:26px;
   }
-  .etransfer-note strong{ font-family:'JetBrains Mono',monospace; color:var(--vermillion); }
+  .etransfer-note strong{ font-family:'JetBrains Mono',monospace; color:var(--orange); }
   .etransfer-note strong.emphasis-underline{ font-family:'Poppins',sans-serif; color:var(--ink); text-decoration:underline; text-underline-offset:2px; }
   .copy-btn{
-    font-family:'Poppins',sans-serif; font-weight:600; font-size:0.82rem; letter-spacing:0.02em;
-    padding:4px 12px; border-radius:999px; border:1.3px solid var(--gold); background:var(--paper);
-    color:var(--green-deep); cursor:pointer; margin:0 4px; vertical-align:middle; transition:all .2s ease;
+    font-family:'Poppins',sans-serif; font-weight:600; font-size:0.82rem; padding:4px 12px; border-radius:999px;
+    border:1.3px solid var(--orange); background:transparent; color:var(--orange); cursor:pointer; margin:0 4px;
+    vertical-align:middle; transition:all .2s ease;
   }
-  .copy-btn:hover{ background:var(--gold-light); }
+  .copy-btn:hover{ background:var(--orange); color:#1a0d02; }
   .copy-btn.copied{ background:var(--green); border-color:var(--green); color:#fff; }
 
   .field fieldset{ border:none; padding:0; margin:0; }
-  .field legend{ display:block; font-size:0.86rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--green-deep); margin-bottom:11px; padding:0; }
+  .field legend{ display:block; font-size:0.86rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--orange); margin-bottom:11px; padding:0; }
   .confirm-toggle{
     width:100%; display:flex; align-items:center; gap:14px; text-align:left;
-    padding:17px 18px; border-radius:12px; border:1.5px solid var(--line); background:var(--cream);
+    padding:17px 18px; border-radius:12px; border:1.5px solid var(--line); background:var(--panel-2);
     font-family:'Poppins',sans-serif; font-weight:600; font-size:1.04rem; color:var(--ink-soft); cursor:pointer;
     transition:all .2s ease;
   }
-  .confirm-toggle:hover{ border-color:var(--green); }
-  .confirm-toggle:focus-visible{ outline:2px solid var(--gold); outline-offset:2px; }
+  .confirm-toggle:hover{ border-color:var(--orange); }
+  .confirm-toggle:focus-visible{ outline:2px solid var(--orange); outline-offset:2px; }
   .confirm-toggle .check-circle{
-    flex:none; width:25px; height:25px; border-radius:50%; border:2px solid var(--line); background:var(--paper);
+    flex:none; width:25px; height:25px; border-radius:50%; border:2px solid var(--line); background:var(--panel);
     position:relative; transition:all .2s ease;
   }
   .confirm-toggle.selected{ background:var(--green); border-color:var(--green); color:#fff; }
@@ -229,145 +196,133 @@
   .submit-btn{
     width:100%; padding:18px; border-radius:12px; border:none; margin-top:10px;
     font-family:'Poppins',sans-serif; font-weight:700; font-size:1.14rem; letter-spacing:0.01em;
-    cursor:not-allowed; background:#D8CFBC; color:#8A7F6A; transition:all .25s ease;
+    cursor:not-allowed; background:#2A2438; color:#7A7188; transition:all .25s ease;
   }
   .submit-btn.enabled{
-    cursor:pointer; background:linear-gradient(180deg, var(--gold-light), var(--gold)); color:var(--green-deep);
-    box-shadow:0 12px 20px -10px rgba(201,154,46,0.6);
+    cursor:pointer; background:linear-gradient(135deg, var(--orange), var(--purple)); color:#fff;
+    box-shadow:0 12px 24px -10px rgba(255,122,26,0.5);
   }
   .submit-btn.enabled:hover{ transform:translateY(-1px); }
-  .submit-btn:focus-visible{ outline:2px solid var(--green-deep); outline-offset:2px; }
+  .submit-btn:focus-visible{ outline:2px solid var(--orange); outline-offset:2px; }
   .helper-text{ font-size:0.88rem; color:var(--ink-soft); margin-top:10px; text-align:center; }
 
-  .confirmation{
-    text-align:center; padding: 20px 6px 6px 6px;
-  }
+  .confirmation{ text-align:center; padding:20px 6px 6px 6px; }
   .confirmation svg{ width:64px; height:64px; margin-bottom:10px; }
-  .confirmation h3{ font-size:1.3rem; color:var(--green-deep); margin-bottom:8px; }
-  .confirmation p{ font-size:0.92rem; color:var(--ink-soft); line-height:1.6; margin-bottom:20px; }
+  .confirmation h3{ font-size:1.3rem; color:#fff; margin-bottom:8px; }
+  .confirmation p{ font-size:0.94rem; color:var(--ink-soft); line-height:1.6; margin-bottom:20px; }
+  .confirmation a{ color:var(--orange); text-decoration:underline; }
   .confirmation button{
-    background:transparent; border:1.5px solid var(--green); color:var(--green-deep); font-weight:600;
+    background:transparent; border:1.5px solid var(--orange); color:var(--orange); font-weight:600;
     padding:10px 22px; border-radius:999px; cursor:pointer; font-family:'Poppins',sans-serif;
   }
-  .confirmation button:hover{ background:var(--green); color:#fff; }
+  .confirmation button:hover{ background:var(--orange); color:#1a0d02; }
 
   /* ===== ADMIN ===== */
   .admin-gate{
-    max-width:400px; margin:40px auto; background:var(--paper); border:1px solid var(--line); border-radius:18px;
+    max-width:400px; margin:40px auto; background:var(--panel); border:1px solid var(--line); border-radius:18px;
     padding:32px 30px; text-align:center; box-shadow:var(--shadow);
   }
-  .admin-gate svg{ width:44px; height:44px; margin-bottom:14px; color:var(--green-deep); }
-  .admin-gate h2{ font-size:1.25rem; color:var(--green-deep); margin-bottom:6px; }
+  .admin-gate svg{ width:44px; height:44px; margin-bottom:14px; color:var(--orange); }
+  .admin-gate h2{ font-size:1.25rem; color:#fff; margin-bottom:6px; }
   .admin-gate p{ font-size:0.86rem; color:var(--ink-soft); margin-bottom:20px; }
   .admin-gate input{
     width:100%; padding:12px 14px; border-radius:10px; border:1.5px solid var(--line); text-align:center;
-    font-family:'JetBrains Mono',monospace; font-size:1.1rem; letter-spacing:0.3em; margin-bottom:14px; background:var(--cream);
+    font-family:'JetBrains Mono',monospace; font-size:1.1rem; letter-spacing:0.3em; margin-bottom:14px; background:var(--panel-2); color:var(--ink);
   }
-  .admin-gate input:focus{ outline:none; border-color:var(--green); }
+  .admin-gate input:focus{ outline:none; border-color:var(--orange); }
   .admin-gate .unlock-btn{
     width:100%; padding:13px; border:none; border-radius:10px; font-weight:700; cursor:pointer;
-    background:var(--green-deep); color:var(--cream); font-family:'Poppins',sans-serif;
+    background:var(--orange); color:#1a0d02; font-family:'Poppins',sans-serif;
   }
-  .admin-gate .unlock-btn:hover{ background:var(--green); }
-  .admin-gate .error-msg{ color:var(--vermillion); font-size:0.82rem; margin-top:10px; min-height:1.2em; }
+  .admin-gate .unlock-btn:hover{ background:var(--orange-deep); }
+  .admin-gate .error-msg{ color:var(--rose); font-size:0.82rem; margin-top:10px; min-height:1.2em; }
 
-  .admin-content{ }
   .registration-toggle{
     display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;
-    background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:16px 20px; margin-bottom:20px;
-    box-shadow:0 8px 18px -14px rgba(42,27,16,0.25);
+    background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px 20px; margin-bottom:20px;
+    box-shadow:var(--shadow);
   }
   .registration-toggle span{ font-size:0.96rem; color:var(--ink); }
   .registration-toggle strong.reg-open{ color:var(--green); }
-  .registration-toggle strong.reg-closed{ color:var(--vermillion); }
+  .registration-toggle strong.reg-closed{ color:var(--rose); }
   .toggle-reg-btn{
     font-family:'Poppins',sans-serif; font-weight:700; font-size:0.88rem; padding:10px 20px; border-radius:999px;
     border:none; cursor:pointer; transition:all .2s ease; color:#fff;
   }
-  .toggle-reg-btn[data-current="open"]{ background:var(--vermillion); }
+  .toggle-reg-btn[data-current="open"]{ background:var(--rose); }
   .toggle-reg-btn[data-current="closed"]{ background:var(--green); }
   .toggle-reg-btn:hover{ opacity:0.9; }
   .toggle-reg-btn:disabled{ opacity:0.6; cursor:not-allowed; }
 
   .admin-summary{ display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-bottom:28px; }
-  .summary-card{ background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:18px; text-align:center; }
-  .summary-card .num{ font-family:'JetBrains Mono',monospace; font-size:1.7rem; font-weight:700; color:var(--green-deep); }
+  .summary-card{ background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px; text-align:center; }
+  .summary-card .num{ font-family:'JetBrains Mono',monospace; font-size:1.7rem; font-weight:700; color:var(--orange); }
   .summary-card .lbl{ font-size:0.74rem; letter-spacing:0.05em; text-transform:uppercase; color:var(--ink-soft); margin-top:4px; }
   @media (max-width:900px){ .admin-summary{ grid-template-columns:repeat(3,1fr); } }
   @media (max-width:640px){ .admin-summary{ grid-template-columns:repeat(2,1fr); } }
 
   .admin-toolbar{ display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:10px; }
-  .admin-toolbar h2{ font-size:1.2rem; color:var(--green-deep); }
+  .admin-toolbar h2{ font-size:1.2rem; color:#fff; }
   .toolbar-actions{ display:flex; gap:10px; flex-wrap:wrap; }
   .refresh-btn{
-    background:transparent; border:1.5px solid var(--green); color:var(--green-deep); font-weight:600;
+    background:transparent; border:1.5px solid var(--orange); color:var(--orange); font-weight:600;
     padding:8px 16px; border-radius:999px; cursor:pointer; font-family:'Poppins',sans-serif; font-size:0.84rem;
   }
-  .refresh-btn:hover{ background:var(--green); color:#fff; }
-
-  table.roster{ width:100%; border-collapse:collapse; background:var(--paper); border-radius:14px; overflow:hidden; box-shadow:0 10px 24px -16px rgba(42,27,16,0.25); }
-  table.roster thead th{
-    text-align:left; font-size:0.72rem; letter-spacing:0.07em; text-transform:uppercase; color:var(--cream);
-    background:var(--green-deep); padding:12px 16px; font-weight:600;
-  }
-  table.roster tbody td{ padding:13px 16px; border-bottom:1px solid var(--line); font-size:0.92rem; }
-  table.roster tbody tr:last-child td{ border-bottom:none; }
-  table.roster tbody tr:hover{ background:var(--cream-deep); }
-  table.roster td.amt{ font-family:'JetBrains Mono',monospace; font-weight:600; color:var(--green-deep); }
-  .party-breakdown{ font-size:0.74rem; color:var(--ink-soft); margin-top:2px; }
-  .payment-select{
-    font-family:'Poppins',sans-serif; font-weight:600; font-size:0.82rem; padding:6px 10px; border-radius:8px;
-    border:1.5px solid var(--line); background:var(--cream); color:var(--ink); cursor:pointer;
-  }
-  .payment-select.is-paid, .payment-badge.is-paid{ background:var(--green); border-color:var(--green); color:#fff; }
-  .payment-select.is-notpaid, .payment-badge.is-notpaid{ background:var(--cream-deep); border-color:var(--gold); color:var(--vermillion); }
-  .status-cell{ display:flex; flex-direction:column; align-items:flex-start; gap:6px; }
-  .email-btn{
-    font-family:'Poppins',sans-serif; font-weight:600; font-size:0.76rem; padding:5px 10px; border-radius:8px;
-    border:1.5px solid var(--green-deep); background:var(--paper); color:var(--green-deep); cursor:pointer;
-    transition:all .2s ease;
-  }
-  .email-btn:hover:not(:disabled){ background:var(--green-deep); color:#fff; }
-  .email-btn.sent{ background:var(--green); border-color:var(--green); color:#fff; cursor:default; opacity:1; }
-  .email-btn:disabled{ cursor:not-allowed; }
-  .payment-badge{
-    display:inline-block; font-family:'Poppins',sans-serif; font-weight:600; font-size:0.8rem;
-    padding:6px 12px; border-radius:999px; border:1.5px solid var(--line); margin-right:8px;
-  }
-  .payment-edit-btn{
-    background:none; border:none; color:var(--green-deep); font-size:0.78rem; font-weight:600;
-    text-decoration:underline; cursor:pointer; font-family:'Poppins',sans-serif; padding:0;
-  }
+  .refresh-btn:hover{ background:var(--orange); color:#1a0d02; }
 
   .payment-gate{
     display:flex; align-items:center; gap:10px; flex-wrap:wrap;
-    background:var(--paper); border:1px dashed var(--gold); border-radius:12px; padding:12px 16px; margin-bottom:14px;
+    background:var(--panel); border:1px dashed var(--orange); border-radius:12px; padding:12px 16px; margin-bottom:14px;
   }
-  .payment-gate svg{ width:20px; height:20px; color:var(--green-deep); flex:none; }
+  .payment-gate svg{ width:20px; height:20px; color:var(--orange); flex:none; }
   .payment-gate span{ font-size:0.86rem; color:var(--ink-soft); }
   .payment-gate input{
     font-family:'JetBrains Mono',monospace; padding:8px 10px; border-radius:8px; border:1.5px solid var(--line);
-    width:110px; background:var(--cream); letter-spacing:0.2em; text-align:center; font-size:0.9rem;
+    width:110px; background:var(--panel-2); color:var(--ink); letter-spacing:0.2em; text-align:center; font-size:0.9rem;
   }
-  .payment-gate input:focus{ outline:none; border-color:var(--green); }
+  .payment-gate input:focus{ outline:none; border-color:var(--orange); }
   .payment-unlock-btn{
-    background:var(--green-deep); color:var(--cream); border:none; padding:8px 16px; border-radius:8px;
+    background:var(--orange); color:#1a0d02; border:none; padding:8px 16px; border-radius:8px;
     font-weight:600; cursor:pointer; font-family:'Poppins',sans-serif; font-size:0.84rem;
   }
-  .payment-unlock-btn:hover{ background:var(--green); }
-  .payment-error{ color:var(--vermillion); font-size:0.78rem; }
-  .payment-locked{
-    font-size:0.78rem; font-weight:600; border-radius:999px; padding:5px 12px; display:inline-block;
+  .payment-unlock-btn:hover{ background:var(--orange-deep); }
+  .payment-error{ color:var(--rose); font-size:0.78rem; }
+
+  table.roster{ width:100%; border-collapse:collapse; background:var(--panel); border-radius:14px; overflow:hidden; box-shadow:var(--shadow); }
+  table.roster thead th{
+    text-align:left; font-size:0.72rem; letter-spacing:0.07em; text-transform:uppercase; color:#1a0d02;
+    background:var(--orange); padding:12px 16px; font-weight:600;
   }
+  table.roster tbody td{ padding:13px 16px; border-bottom:1px solid var(--line); font-size:0.92rem; color:var(--ink); }
+  table.roster tbody tr:last-child td{ border-bottom:none; }
+  table.roster tbody tr:hover{ background:var(--panel-2); }
+  table.roster td.amt{ font-family:'JetBrains Mono',monospace; font-weight:600; color:var(--orange); }
+  .party-breakdown{ font-size:0.74rem; color:var(--ink-soft); margin-top:2px; }
+
+  .payment-select{
+    font-family:'Poppins',sans-serif; font-weight:600; font-size:0.82rem; padding:6px 10px; border-radius:8px;
+    border:1.5px solid var(--line); background:var(--panel-2); color:var(--ink); cursor:pointer;
+  }
+  .payment-select.is-paid{ background:var(--green); border-color:var(--green); color:#fff; }
+  .payment-select.is-notpaid{ background:var(--panel-2); border-color:var(--orange); color:var(--orange); }
+  .status-cell{ display:flex; flex-direction:column; align-items:flex-start; gap:6px; }
+  .payment-locked{ font-size:0.78rem; font-weight:600; border-radius:999px; padding:5px 12px; display:inline-block; }
   .payment-locked.is-paid{ background:var(--green); color:#fff; }
-  .payment-locked.is-notpaid{ background:var(--cream-deep); border:1px solid var(--gold); color:var(--vermillion); }
-  .del-btn{ background:none; border:none; color:var(--vermillion); cursor:pointer; font-size:0.8rem; font-weight:600; }
+  .payment-locked.is-notpaid{ background:var(--panel-2); border:1px solid var(--orange); color:var(--orange); }
+  .email-btn{
+    font-family:'Poppins',sans-serif; font-weight:600; font-size:0.76rem; padding:5px 10px; border-radius:8px;
+    border:1.5px solid var(--orange); background:transparent; color:var(--orange); cursor:pointer; transition:all .2s ease;
+  }
+  .email-btn:hover:not(:disabled){ background:var(--orange); color:#1a0d02; }
+  .email-btn.sent{ background:var(--green); border-color:var(--green); color:#fff; cursor:default; opacity:1; }
+  .email-btn:disabled{ cursor:not-allowed; }
+  .del-btn{ background:none; border:none; color:var(--rose); cursor:pointer; font-size:0.8rem; font-weight:600; }
   .del-btn:hover{ text-decoration:underline; }
-  .empty-state{ text-align:center; padding:50px 20px; color:var(--ink-soft); background:var(--paper); border-radius:14px; border:1px dashed var(--line); }
+  .empty-state{ text-align:center; padding:50px 20px; color:var(--ink-soft); background:var(--panel); border-radius:14px; border:1px dashed var(--line); }
   .empty-state svg{ width:44px; height:44px; margin-bottom:12px; opacity:0.6; }
 
   footer{ text-align:center; padding:26px 20px 40px 20px; font-size:0.78rem; color:var(--ink-soft); }
-  footer a{ color:var(--green-deep); text-decoration:underline; text-decoration-color:var(--line); text-underline-offset:2px; }
+  footer a{ color:var(--orange); text-decoration:underline; text-decoration-color:rgba(255,122,26,0.4); text-underline-offset:2px; }
 
   @media (prefers-reduced-motion: reduce){
     *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
@@ -379,8 +334,8 @@
 <header class="hero">
   <nav class="tabs">
     <div class="brandmark">
-      <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" stroke="currentColor" stroke-width="1.4"/><path d="M16 6 L18 14 L26 16 L18 18 L16 26 L14 18 L6 16 L14 14 Z" fill="currentColor"/></svg>
-      Onam 2026 · Ottawa Valley
+      <svg viewBox="0 0 32 32" fill="none"><path d="M16 3 C10 3 6 8 6 14 C6 20 10 27 16 29 C22 27 26 20 26 14 C26 8 22 3 16 3 Z" fill="currentColor" opacity="0.9"/><circle cx="12" cy="14" r="1.6" fill="#0A0710"/><circle cx="20" cy="14" r="1.6" fill="#0A0710"/></svg>
+      Chalk River Social Club
     </div>
     <div class="tab-group" role="tablist">
       <button class="tab-btn active" data-tab="register" role="tab" aria-selected="true">Register</button>
@@ -390,38 +345,47 @@
 </header>
 
 <main>
-
   <!-- ===== REGISTER PANEL ===== -->
   <section id="register-panel" class="panel active">
     <div class="landing-grid">
       <div class="details-col">
-        <h1>Maveli is coming<br><em>home to the valley.</em></h1>
-        <p class="tagline">Once a year the beloved King Mahabali returns to see his people thriving. Join Malayalis across the Ottawa Valley for a full sadhya, pookalam, and an afternoon of song &amp; nostalgia.</p>
+        <div class="eyebrow">A Night of Thrills, Scares &amp; Fun</div>
+        <h1>Halloween <span>Haunt</span></h1>
+        <p class="tagline">Join the Chalk River Social Club for a spooky night out at Canada's Wonderland's Halloween Haunt — ride the coasters after dark, dodge the scare zones, and grab dinner in the park before the haunt opens.</p>
         <div class="event-meta">
-          <div class="row"><span class="tag">Date</span> Saturday, August 29, 2026</div>
-          <div class="row"><span class="tag">Time</span> 11:00 AM – 4:00 PM</div>
-          <div class="row"><span class="tag">Venue</span>
-            <span>Shady Nook Recreation Centre — 80 Richardson Crescent, Pembroke<br>
-            <a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=80+Richardson+Crescent+Pembroke+Ontario">View on map</a></span>
+          <div class="row"><span class="tag">Trip</span> Saturday, October 17 – Sunday, October 18</div>
+          <div class="row"><span class="tag">Where</span>
+            <span>Canada's Wonderland, Vaughan, ON<br>
+            <a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Canada%27s+Wonderland+Vaughan+Ontario">View on map</a></span>
+          </div>
+          <div class="row"><span class="tag">Bus</span> Departs ~5:30 AM Oct 17 · Returns ~5:30 AM Oct 18 · Stops in Pembroke, Petawawa, Chalk River, Deep River</div>
+        </div>
+        <div class="deadline-note">⏰ Registration deadline: Friday, September 25</div>
+
+        <div class="highlights-col">
+          <div class="option-card opt1">
+            <h3>Option 1 — Bus Trip</h3>
+            <span class="opt-price">$99 / person</span>
+            <ul>
+              <li>Round-trip coach bus (Pembroke · Petawawa · Chalk River · Deep River), incl. driver gratuity</li>
+              <li>Entry ticket to Canada's Wonderland</li>
+              <li>Dinner at the park</li>
+              <li>Halloween Haunt entry</li>
+            </ul>
+          </div>
+          <div class="option-card opt2">
+            <h3>Option 2 — Self Transportation</h3>
+            <span class="opt-price">$99 / person</span>
+            <ul>
+              <li>Parking for one vehicle at Canada's Wonderland</li>
+              <li>Entry ticket to Canada's Wonderland</li>
+              <li>Dinner at the park</li>
+              <li>Halloween Haunt entry</li>
+            </ul>
           </div>
         </div>
 
-        <div class="pookalam-wrap"><svg id="hero-pookalam" viewBox="0 0 320 320"></svg></div>
-      </div>
-
-      <div class="story-strip">
-        <div class="story-card">
-          <svg viewBox="0 0 200 120" id="art-maveli"></svg>
-          <div class="story-text"><h3>Maveli Varunnu</h3><p>The just king who ruled Kerala in its golden age returns once a year to see his people thriving.</p></div>
-        </div>
-        <div class="story-card">
-          <svg viewBox="0 0 200 120" id="art-pookalam"></svg>
-          <div class="story-text"><h3>Pookalam</h3><p>Every doorstep wears a flower carpet, grown a ring larger each day, so Maveli can find his way home.</p></div>
-        </div>
-        <div class="story-card">
-          <svg viewBox="0 0 200 120" id="art-sadhya"></svg>
-          <div class="story-text"><h3>Onam Sadhya</h3><p>A banana-leaf feast of two dozen-plus dishes — sambar, avial, payasam — served with the season's harvest.</p></div>
-        </div>
+        <p class="age-note">Note: Halloween Haunt is not recommended for children under 13 years. Parents, please use your discretion.</p>
       </div>
 
       <div class="register-col">
@@ -442,14 +406,16 @@
 
               <div class="field ticket-types">
                 <label>Tickets</label>
-                <p class="ticket-note">Free entry for kids under 5 yrs.</p>
+                <p class="ticket-note">Choose Option 1 or Option 2 per person — see details on the left.</p>
                 <div class="ticket-row">
-                  <span class="ticket-name">Adults (13+) <span class="ticket-price">$46</span></span>
-                  <select id="reg-adults" class="ticket-select"></select>
+                  <span class="ticket-name">Bus Trip <small>Option 1</small></span>
+                  <span class="ticket-price">$99</span>
+                  <select id="reg-bus" class="ticket-select"></select>
                 </div>
                 <div class="ticket-row">
-                  <span class="ticket-name">Children (5-12) <span class="ticket-price">$23</span></span>
-                  <select id="reg-children" class="ticket-select"></select>
+                  <span class="ticket-name">Self Transportation <small>Option 2</small></span>
+                  <span class="ticket-price">$99</span>
+                  <select id="reg-self" class="ticket-select"></select>
                 </div>
               </div>
 
@@ -461,8 +427,8 @@
               </div>
 
               <div class="etransfer-note">
-                E-transfer <strong id="etransfer-amount">$0.00</strong> to Nebu Philip at
-                <strong>nebucphilip@outlook.com</strong>
+                E-transfer <strong id="etransfer-amount">$0.00</strong> to Chalk River Social Club at
+                <strong>crsocclb@cnl.ca</strong>
                 <button type="button" class="copy-btn" id="copy-email-btn" aria-label="Copy email address to clipboard">Copy</button>
                 and <strong class="emphasis-underline">return to this page</strong> to complete your registration.
               </div>
@@ -483,15 +449,15 @@
           </div>
 
           <div id="confirm-view" class="confirmation" hidden>
-            <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" fill="#1F6B45"/><path d="M20 33 L28 41 L45 23" stroke="#FBF2DF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" fill="#FF7A1A"/><path d="M20 33 L28 41 L45 23" stroke="#0A0710" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
             <h3>Thank you!</h3>
-            <p>Committee member will send confirmation email in a short while once the e-transfer is confirmed received.</p>
+            <p>Your spot is reserved. A committee member will send a confirmation email once your e-transfer is verified. See you at Canada's Wonderland!</p>
             <button type="button" id="register-another">Register another party</button>
           </div>
 
           <div id="closed-view" class="confirmation" hidden>
             <h3>Registration is now closed</h3>
-            <p>See you soon! Please contact Sree (<a href="mailto:sreeyuth@gmail.com">sreeyuth@gmail.com</a>) if you have any questions.</p>
+            <p>Thanks for your interest — registration for this trip has closed. For questions, contact the Chalk River Social Club at <a href="mailto:crsocclb@cnl.ca">crsocclb@cnl.ca</a>.</p>
           </div>
         </div>
       </div>
@@ -517,9 +483,9 @@
 
       <div class="admin-summary">
         <div class="summary-card"><div class="num mono" id="stat-regs">0</div><div class="lbl">Registrations</div></div>
-        <div class="summary-card"><div class="num mono" id="stat-guests">0</div><div class="lbl">Total Guests</div></div>
-        <div class="summary-card"><div class="num mono" id="stat-adults">0</div><div class="lbl">Adults</div></div>
-        <div class="summary-card"><div class="num mono" id="stat-children">0</div><div class="lbl">Children</div></div>
+        <div class="summary-card"><div class="num mono" id="stat-guests">0</div><div class="lbl">Total Attendees</div></div>
+        <div class="summary-card"><div class="num mono" id="stat-bus">0</div><div class="lbl">Bus Trip</div></div>
+        <div class="summary-card"><div class="num mono" id="stat-self">0</div><div class="lbl">Self Transport</div></div>
         <div class="summary-card"><div class="num mono" id="stat-total">$0.00</div><div class="lbl">Total Ticket Sales</div></div>
       </div>
 
@@ -542,10 +508,9 @@
       <div id="roster-wrap"></div>
     </div>
   </section>
-
 </main>
 
-<footer>Onam in the Ottawa Valley &middot; Questions? Website questions go to Sreeyuth (<a href="mailto:sreeyuth@gmail.com">sreeyuth@gmail.com</a>). E-transfer questions go to Nebu (<a href="mailto:nebucphilip@outlook.com">nebucphilip@outlook.com</a>).</footer>
+<footer>Chalk River Social Club &middot; Halloween Haunt at Canada's Wonderland &middot; Questions? Contact <a href="mailto:crsocclb@cnl.ca">crsocclb@cnl.ca</a></footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -554,6 +519,8 @@
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
   import { getDatabase, ref, push, set, get, remove, update } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
+  // TODO: confirm this Firebase project — reusing the existing onam2026 project under a
+  // new "chrhaunt" namespace is the fastest path (see chat for the exact Rules to add).
   const firebaseConfig = {
     apiKey: "AIzaSyDhORoXjoLauxAWWtZMEImnXpsV_OwlVkw",
     authDomain: "onam2026-34fa9.firebaseapp.com",
@@ -566,9 +533,11 @@
   };
   const firebaseApp = initializeApp(firebaseConfig);
   const db = getDatabase(firebaseApp);
+  const DB_ROOT = "chrhaunt"; // keeps this event's data separate from other events in the same project
+
 (function(){
   "use strict";
-  const TICKET_PRICES = { children: 23, adults: 46 };
+  const TICKET_PRICE = 99;
   const ADMIN_CODE = "1983";
   const PAYMENT_CODE = "1947";
   let adminUnlocked = false;
@@ -587,90 +556,11 @@
     });
   });
 
-  /* ---------- Illustrations ---------- */
-  const NS = "http://www.w3.org/2000/svg";
-  function el(tag, attrs){
-    const e = document.createElementNS(NS, tag);
-    for (const k in attrs) e.setAttribute(k, attrs[k]);
-    return e;
-  }
-
-  function drawPookalam(svg, cx, cy, scale){
-    const rings = [
-      { r: 30*scale, petals: 8,  color: "#BE4526", petalLen: 16*scale },
-      { r: 58*scale, petals: 12, color: "#C99A2E", petalLen: 20*scale },
-      { r: 88*scale, petals: 14, color: "#7B3A66", petalLen: 22*scale },
-      { r: 118*scale, petals: 16, color: "#1F6B45", petalLen: 24*scale }
-    ];
-    svg.appendChild(el("circle", { cx, cy, r: 14*scale, fill:"#E7C468", stroke:"#BE4526", "stroke-width": 2*scale }));
-    rings.forEach(ring => {
-      for (let i=0; i<ring.petals; i++){
-        const angle = (360/ring.petals) * i;
-        const g = el("g", { transform:`rotate(${angle} ${cx} ${cy})` });
-        const petal = el("path", {
-          d:`M ${cx} ${cy-ring.r} q ${ring.petalLen*0.5} ${ring.petalLen*0.6} 0 ${ring.petalLen*1.3} q ${-ring.petalLen*0.5} ${-ring.petalLen*0.6} 0 ${-ring.petalLen*1.3} Z`,
-          fill: ring.color, opacity: 0.92
-        });
-        g.appendChild(petal);
-        svg.appendChild(g);
-      }
-    });
-    svg.appendChild(el("circle", { cx, cy, r: 6*scale, fill:"#BE4526" }));
-  }
-  const heroSvg = document.getElementById("hero-pookalam");
-  drawPookalam(heroSvg, 160, 160, 1);
-
-  function drawMaveli(svg){
-    // simple flat-illustration of King Mahabali: crown, face, mustache, umbrella
-    svg.appendChild(el("ellipse", { cx:100, cy:108, rx:70, ry:10, fill:"#123B29", opacity:0.08 }));
-    // umbrella
-    svg.appendChild(el("path", { d:"M100 8 C60 8 34 34 30 52 L170 52 C166 34 140 8 100 8 Z", fill:"#BE4526" }));
-    svg.appendChild(el("line", { x1:100, y1:52, x2:100, y2:96, stroke:"#7B3A66", "stroke-width":3 }));
-    // body / robe
-    svg.appendChild(el("path", { d:"M70 96 Q100 78 130 96 L138 118 Q100 130 62 118 Z", fill:"#C99A2E" }));
-    // face
-    svg.appendChild(el("circle", { cx:100, cy:82, r:20, fill:"#E2A46B" }));
-    // crown
-    svg.appendChild(el("path", { d:"M82 68 L86 54 L94 64 L100 50 L106 64 L114 54 L118 68 Z", fill:"#C99A2E", stroke:"#8A6414", "stroke-width":1.4, "stroke-linejoin":"round" }));
-    // mustache
-    svg.appendChild(el("path", { d:"M90 88 Q100 94 110 88", stroke:"#3A2416", "stroke-width":3, fill:"none", "stroke-linecap":"round" }));
-    // eyes
-    svg.appendChild(el("circle", { cx:93, cy:80, r:1.8, fill:"#3A2416" }));
-    svg.appendChild(el("circle", { cx:107, cy:80, r:1.8, fill:"#3A2416" }));
-  }
-  drawMaveli(document.getElementById("art-maveli"));
-
-  function drawPookalamCard(svg){
-    drawPookalam(svg, 100, 62, 0.42);
-  }
-  drawPookalamCard(document.getElementById("art-pookalam"));
-
-  function drawSadhya(svg){
-    // banana leaf
-    svg.appendChild(el("ellipse", { cx:100, cy:70, rx:88, ry:38, fill:"#4F8F5C" }));
-    svg.appendChild(el("path", { d:"M14 70 Q100 40 186 70", stroke:"#1F6B45", "stroke-width":2, fill:"none", opacity:0.6 }));
-    // little food mounds
-    const foods = [
-      { cx:55, cy:60, r:11, fill:"#F2E3BE" },   // rice
-      { cx:80, cy:52, r:8,  fill:"#BE4526" },   // sambar
-      { cx:100, cy:66, r:9,  fill:"#C99A2E" },   // avial
-      { cx:122, cy:54, r:7,  fill:"#7B3A66" },   // curry
-      { cx:140, cy:64, r:8,  fill:"#E7C468" },   // payasam
-      { cx:65, cy:82, r:6,  fill:"#BE4526" },
-      { cx:118, cy:80, r:6,  fill:"#4F8F5C" }
-    ];
-    foods.forEach(f => svg.appendChild(el("circle", f)));
-    // banana leaf tip highlight
-    svg.appendChild(el("path", { d:"M12 70 Q4 68 6 60", stroke:"#1F6B45", "stroke-width":3, fill:"none", "stroke-linecap":"round" }));
-    svg.appendChild(el("path", { d:"M188 70 Q196 68 194 60", stroke:"#1F6B45", "stroke-width":3, fill:"none", "stroke-linecap":"round" }));
-  }
-  drawSadhya(document.getElementById("art-sadhya"));
-
   /* ---------- Registration form logic ---------- */
   const nameInput = document.getElementById("reg-name");
   const emailInput = document.getElementById("reg-email");
-  const childrenSelect = document.getElementById("reg-children");
-  const adultsSelect = document.getElementById("reg-adults");
+  const busSelect = document.getElementById("reg-bus");
+  const selfSelect = document.getElementById("reg-self");
   const totalAmountEl = document.getElementById("total-amount");
   const etransferAmountEl = document.getElementById("etransfer-amount");
   const confirmToggleBtn = document.getElementById("etransfer-confirm-btn");
@@ -682,7 +572,6 @@
 
   let etransferConfirmed = false;
 
-  // Populate the ticket-count dropdowns (0-10) with sensible defaults
   function populateCountSelect(selectEl, defaultValue){
     for (let i = 0; i <= 10; i++){
       const opt = document.createElement("option");
@@ -692,25 +581,17 @@
       selectEl.appendChild(opt);
     }
   }
-  populateCountSelect(childrenSelect, 0);
-  populateCountSelect(adultsSelect, 0);
+  populateCountSelect(busSelect, 0);
+  populateCountSelect(selfSelect, 0);
 
   function ticketCounts(){
     return {
-      children: parseInt(childrenSelect.value, 10) || 0,
-      adults: parseInt(adultsSelect.value, 10) || 0
+      bus: parseInt(busSelect.value, 10) || 0,
+      self: parseInt(selfSelect.value, 10) || 0
     };
   }
-
-  function currentTotal(){
-    const c = ticketCounts();
-    return (c.children * TICKET_PRICES.children) + (c.adults * TICKET_PRICES.adults);
-  }
-
-  function currentPartySize(){
-    const c = ticketCounts();
-    return c.children + c.adults;
-  }
+  function currentPartySize(){ const c = ticketCounts(); return c.bus + c.self; }
+  function currentTotal(){ return currentPartySize() * TICKET_PRICE; }
 
   function refreshTotals(){
     const total = currentTotal();
@@ -740,7 +621,7 @@
     }
   }
 
-  [childrenSelect, adultsSelect].forEach(sel => sel.addEventListener("change", refreshTotals));
+  [busSelect, selfSelect].forEach(sel => sel.addEventListener("change", refreshTotals));
   nameInput.addEventListener("input", updateSubmitState);
   emailInput.addEventListener("input", updateSubmitState);
 
@@ -754,11 +635,10 @@
   const copyEmailBtn = document.getElementById("copy-email-btn");
   if (copyEmailBtn){
     copyEmailBtn.addEventListener("click", async () => {
-      const email = "nebucphilip@outlook.com";
+      const email = "crsocclb@cnl.ca";
       try{
         await navigator.clipboard.writeText(email);
       }catch(err){
-        // Fallback for browsers without Clipboard API permissions
         const temp = document.createElement("textarea");
         temp.value = email;
         temp.style.position = "fixed";
@@ -783,25 +663,22 @@
   /* ---------- Registration open/closed toggle ---------- */
   async function getRegistrationOpen(){
     try{
-      const snap = await get(ref(db, "settings/registrationOpen"));
-      // Unset (never toggled) defaults to open; only an explicit false closes it.
+      const snap = await get(ref(db, DB_ROOT + "/settings/registrationOpen"));
       return snap.exists() ? snap.val() !== false : true;
     }catch(err){
       console.error("Failed to check registration status:", err);
-      return true; // fail open so a Firebase hiccup never accidentally blocks registration
+      return true;
     }
   }
-
   async function setRegistrationOpen(isOpen){
     try{
-      await set(ref(db, "settings/registrationOpen"), isOpen);
+      await set(ref(db, DB_ROOT + "/settings/registrationOpen"), isOpen);
       return true;
     }catch(err){
       console.error("Failed to update registration status:", err);
       return false;
     }
   }
-
   (async () => {
     const isOpen = await getRegistrationOpen();
     if (!isOpen){
@@ -814,7 +691,7 @@
   /* ---------- Storage helpers (Firebase Realtime Database) ---------- */
   async function saveRegistration(record){
     try{
-      const newRef = push(ref(db, "registrations"));
+      const newRef = push(ref(db, DB_ROOT + "/registrations"));
       await set(newRef, record);
       return true;
     }catch(err){
@@ -826,7 +703,7 @@
   async function fetchAllRegistrations(){
     const out = [];
     try{
-      const snapshot = await get(ref(db, "registrations"));
+      const snapshot = await get(ref(db, DB_ROOT + "/registrations"));
       if (snapshot.exists()){
         snapshot.forEach(childSnap => {
           const val = childSnap.val();
@@ -843,7 +720,7 @@
 
   async function deleteRegistration(id){
     try{
-      await remove(ref(db, "registrations/" + id));
+      await remove(ref(db, DB_ROOT + "/registrations/" + id));
       return true;
     }catch(err){
       console.error("Failed to delete registration:", err);
@@ -853,7 +730,7 @@
 
   async function updatePaymentStatus(id, value){
     try{
-      await update(ref(db, "registrations/" + id), { paymentDone: value });
+      await update(ref(db, DB_ROOT + "/registrations/" + id), { paymentDone: value });
       return true;
     }catch(err){
       console.error("Failed to update payment status:", err);
@@ -863,7 +740,7 @@
 
   async function markConfEmailSent(id){
     try{
-      await update(ref(db, "registrations/" + id), { confEmailSent: true });
+      await update(ref(db, DB_ROOT + "/registrations/" + id), { confEmailSent: true });
       return true;
     }catch(err){
       console.error("Failed to record confirmation email status:", err);
@@ -872,12 +749,15 @@
   }
 
   /* ---------- Confirmation email (EmailJS) ---------- */
+  // TODO: reuses the same EmailJS account as the Onam site, but needs its own Template ID
+  // with wording for this trip. Create a new template in your EmailJS dashboard and paste
+  // its ID below.
   const EMAILJS_SERVICE_ID = "service_a1u2k0e";
-  const EMAILJS_TEMPLATE_ID = "template_jyn7xyc";
+  const EMAILJS_TEMPLATE_ID = "YOUR_EMAILJS_TEMPLATE_ID";
   const EMAILJS_PUBLIC_KEY = "R5VPWpsBL0TYn7YQG";
   let emailjsReady = false;
   try{
-    if (window.emailjs && EMAILJS_PUBLIC_KEY !== "YOUR_EMAILJS_PUBLIC_KEY"){
+    if (window.emailjs && EMAILJS_TEMPLATE_ID !== "YOUR_EMAILJS_TEMPLATE_ID"){
       window.emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
       emailjsReady = true;
     }
@@ -887,26 +767,26 @@
 
   async function sendConfirmationEmail(record){
     if (!emailjsReady){
-      console.error("EmailJS is not configured yet — add your Service ID, Template ID, and Public Key.");
+      console.error("EmailJS is not configured yet — add your Template ID.");
       return false;
     }
-    const adults = record.adults || 0;
-    const children = record.children || 0;
+    const bus = record.bus || 0;
+    const self = record.self || 0;
     const breakdownParts = [];
-    if (adults) breakdownParts.push(adults + (adults === 1 ? " Adult" : " Adults"));
-    if (children) breakdownParts.push(children + (children === 1 ? " Child" : " Children"));
+    if (bus) breakdownParts.push(bus + (bus === 1 ? " Bus Trip ticket" : " Bus Trip tickets"));
+    if (self) breakdownParts.push(self + (self === 1 ? " Self Transportation ticket" : " Self Transportation tickets"));
     const partyBreakdown = breakdownParts.length ? breakdownParts.join(", ") : String(record.partySize || 0);
     try{
       await window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
         to_name: record.name,
         to_email: record.email,
         party_size: record.partySize,
-        adults: adults,
-        children: children,
+        bus_trip: bus,
+        self_transport: self,
         party_breakdown: partyBreakdown,
         total_amount: "$" + (record.total || 0).toFixed(2),
-        event_date: "Saturday, August 29, 2026",
-        venue: "Shady Nook Recreation Centre, 80 Richardson Crescent, Pembroke"
+        event_date: "Saturday, October 17, 2026",
+        venue: "Canada's Wonderland, Vaughan, ON"
       }, { publicKey: EMAILJS_PUBLIC_KEY });
       return true;
     }catch(err){
@@ -926,8 +806,8 @@
     const record = {
       name: nameInput.value.trim(),
       email: emailInput.value.trim(),
-      children: counts.children,
-      adults: counts.adults,
+      bus: counts.bus,
+      self: counts.self,
       partySize: currentPartySize(),
       total: currentTotal(),
       timestamp: Date.now()
@@ -952,8 +832,8 @@
     etransferConfirmed = false;
     confirmToggleBtn.classList.remove("selected");
     confirmToggleBtn.setAttribute("aria-pressed", "false");
-    childrenSelect.value = "0";
-    adultsSelect.value = "0";
+    busSelect.value = "0";
+    selfSelect.value = "0";
     refreshTotals();
     updateSubmitState();
     confirmView.hidden = true;
@@ -1043,14 +923,14 @@
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF();
       doc.setFontSize(14);
-      doc.text("Onam 2026 \u00b7 Ottawa Valley \u2014 Registration Roster", 14, 16);
+      doc.text("Chalk River Social Club \u2014 Halloween Haunt Roster", 14, 16);
       doc.setFontSize(9);
-      doc.text("Shady Nook Recreation Centre, Pembroke \u00b7 Saturday, August 29, 2026", 14, 22);
+      doc.text("Canada's Wonderland \u00b7 Saturday, October 17, 2026", 14, 22);
 
       const body = regs.map(r => {
         const parts = [];
-        if (r.adults) parts.push(r.adults + "A");
-        if (r.children) parts.push(r.children + "C");
+        if (r.bus) parts.push(r.bus + "Bus");
+        if (r.self) parts.push(r.self + "Self");
         return [
           "",
           r.name || "",
@@ -1063,8 +943,8 @@
         ];
       });
       const totalGuests = regs.reduce((s,r) => s + (r.partySize||0), 0);
-      const totalAdults = regs.reduce((s,r) => s + (r.adults||0), 0);
-      const totalChildren = regs.reduce((s,r) => s + (r.children||0), 0);
+      const totalBus = regs.reduce((s,r) => s + (r.bus||0), 0);
+      const totalSelf = regs.reduce((s,r) => s + (r.self||0), 0);
       const totalAmount = regs.reduce((s,r) => s + (r.total||0), 0);
 
       doc.autoTable({
@@ -1072,7 +952,7 @@
         body: body,
         startY: 28,
         styles: { fontSize: 8 },
-        headStyles: { fillColor: [18, 59, 41] },
+        headStyles: { fillColor: [217, 86, 10] },
         columnStyles: { 0: { cellWidth: 20, halign: "center" } },
         didDrawCell: function(data){
           if (data.section === "body" && data.column.index === 0){
@@ -1086,9 +966,9 @@
 
       const finalY = (doc.lastAutoTable && doc.lastAutoTable.finalY) ? doc.lastAutoTable.finalY : 28;
       doc.setFontSize(9);
-      doc.text(`Total registrations: ${regs.length}   Total guests: ${totalGuests} (${totalAdults} Adults, ${totalChildren} Children)   Total ticket sales: $${totalAmount.toFixed(2)}`, 14, finalY + 10);
+      doc.text(`Total registrations: ${regs.length}   Total attendees: ${totalGuests} (${totalBus} Bus, ${totalSelf} Self)   Total ticket sales: $${totalAmount.toFixed(2)}`, 14, finalY + 10);
 
-      doc.save("onam-2026-registrations.pdf");
+      doc.save("chalk-river-haunt-registrations.pdf");
     }catch(err){
       console.error("PDF export failed:", err);
       alert("Could not export the PDF. Please try again.");
@@ -1105,12 +985,12 @@
 
     document.getElementById("stat-regs").textContent = regs.length;
     const totalGuests = regs.reduce((s,r) => s + (r.partySize||0), 0);
-    const totalAdults = regs.reduce((s,r) => s + (r.adults||0), 0);
-    const totalChildren = regs.reduce((s,r) => s + (r.children||0), 0);
+    const totalBus = regs.reduce((s,r) => s + (r.bus||0), 0);
+    const totalSelf = regs.reduce((s,r) => s + (r.self||0), 0);
     const totalAmount = regs.reduce((s,r) => s + (r.total||0), 0);
     document.getElementById("stat-guests").textContent = totalGuests;
-    document.getElementById("stat-adults").textContent = totalAdults;
-    document.getElementById("stat-children").textContent = totalChildren;
+    document.getElementById("stat-bus").textContent = totalBus;
+    document.getElementById("stat-self").textContent = totalSelf;
     document.getElementById("stat-total").textContent = "$" + totalAmount.toFixed(2);
 
     if (regs.length === 0){
@@ -1144,8 +1024,8 @@
           </div>`;
       }
       const breakdownParts = [];
-      if (r.adults) breakdownParts.push(r.adults + (r.adults === 1 ? " Adult" : " Adults"));
-      if (r.children) breakdownParts.push(r.children + (r.children === 1 ? " Child" : " Children"));
+      if (r.bus) breakdownParts.push(r.bus + (r.bus === 1 ? " Bus" : " Bus"));
+      if (r.self) breakdownParts.push(r.self + (r.self === 1 ? " Self" : " Self"));
       const breakdown = breakdownParts.length ? `<div class="party-breakdown">${breakdownParts.join(", ")}</div>` : "";
 
       rows += `<tr data-id="${r.id}">
