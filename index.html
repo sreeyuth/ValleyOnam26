@@ -519,21 +519,18 @@
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
   import { getDatabase, ref, push, set, get, remove, update } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
-  // TODO: confirm this Firebase project — reusing the existing onam2026 project under a
-  // new "chrhaunt" namespace is the fastest path (see chat for the exact Rules to add).
   const firebaseConfig = {
-    apiKey: "AIzaSyDhORoXjoLauxAWWtZMEImnXpsV_OwlVkw",
-    authDomain: "onam2026-34fa9.firebaseapp.com",
-    databaseURL: "https://onam2026-34fa9-default-rtdb.firebaseio.com",
-    projectId: "onam2026-34fa9",
-    storageBucket: "onam2026-34fa9.firebasestorage.app",
-    messagingSenderId: "315246635705",
-    appId: "1:315246635705:web:aeac95eddf175f2aa9c968",
-    measurementId: "G-PMQSWD6SBR"
+    apiKey: "AIzaSyCCrGLkO4jR6_jezqn6pBLFW38FKEeDmPw",
+    authDomain: "haunt26-bb323.firebaseapp.com",
+    databaseURL: "https://haunt26-bb323-default-rtdb.firebaseio.com",
+    projectId: "haunt26-bb323",
+    storageBucket: "haunt26-bb323.firebasestorage.app",
+    messagingSenderId: "643301387496",
+    appId: "1:643301387496:web:6d23c7fcc8ef2712136d5d",
+    measurementId: "G-6DV9ND3Y57"
   };
   const firebaseApp = initializeApp(firebaseConfig);
   const db = getDatabase(firebaseApp);
-  const DB_ROOT = "chrhaunt"; // keeps this event's data separate from other events in the same project
 
 (function(){
   "use strict";
@@ -663,7 +660,7 @@
   /* ---------- Registration open/closed toggle ---------- */
   async function getRegistrationOpen(){
     try{
-      const snap = await get(ref(db, DB_ROOT + "/settings/registrationOpen"));
+      const snap = await get(ref(db, "settings/registrationOpen"));
       return snap.exists() ? snap.val() !== false : true;
     }catch(err){
       console.error("Failed to check registration status:", err);
@@ -672,7 +669,7 @@
   }
   async function setRegistrationOpen(isOpen){
     try{
-      await set(ref(db, DB_ROOT + "/settings/registrationOpen"), isOpen);
+      await set(ref(db, "settings/registrationOpen"), isOpen);
       return true;
     }catch(err){
       console.error("Failed to update registration status:", err);
@@ -691,7 +688,7 @@
   /* ---------- Storage helpers (Firebase Realtime Database) ---------- */
   async function saveRegistration(record){
     try{
-      const newRef = push(ref(db, DB_ROOT + "/registrations"));
+      const newRef = push(ref(db, "registrations"));
       await set(newRef, record);
       return true;
     }catch(err){
@@ -703,7 +700,7 @@
   async function fetchAllRegistrations(){
     const out = [];
     try{
-      const snapshot = await get(ref(db, DB_ROOT + "/registrations"));
+      const snapshot = await get(ref(db, "registrations"));
       if (snapshot.exists()){
         snapshot.forEach(childSnap => {
           const val = childSnap.val();
@@ -720,7 +717,7 @@
 
   async function deleteRegistration(id){
     try{
-      await remove(ref(db, DB_ROOT + "/registrations/" + id));
+      await remove(ref(db, "registrations/" + id));
       return true;
     }catch(err){
       console.error("Failed to delete registration:", err);
@@ -730,7 +727,7 @@
 
   async function updatePaymentStatus(id, value){
     try{
-      await update(ref(db, DB_ROOT + "/registrations/" + id), { paymentDone: value });
+      await update(ref(db, "registrations/" + id), { paymentDone: value });
       return true;
     }catch(err){
       console.error("Failed to update payment status:", err);
@@ -740,7 +737,7 @@
 
   async function markConfEmailSent(id){
     try{
-      await update(ref(db, DB_ROOT + "/registrations/" + id), { confEmailSent: true });
+      await update(ref(db, "registrations/" + id), { confEmailSent: true });
       return true;
     }catch(err){
       console.error("Failed to record confirmation email status:", err);
